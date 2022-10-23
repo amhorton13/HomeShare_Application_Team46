@@ -9,6 +9,6 @@ public class InvitationDetails extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_invitation_details);
+        //setContentView(R.layout.activity_invitation_details);
     }
 }
