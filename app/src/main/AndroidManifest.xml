@@ -23,7 +23,7 @@
             android:name=".ProfilePage"
             android:exported="false" />
         <activity
-            android:name=".HomePage"
+            android:name=".PostInvitation"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
