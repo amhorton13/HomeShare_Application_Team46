@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">HomeShare_Application_Team46</string>
     <string name="amanda_test"> Amanda!</string>
+    <string name="create_invitation_title">Create Invitation</string>
+    <string name="property_name"> Name the property</string>
+    <string name="rent_price"> Rent per month</string>
+    <string name="address"> address</string>
+
 </resources>
