@@ -15,6 +15,12 @@
         <item>Graduate</item>
     </string-array>
 
+    <string name="invitation_details_title">Invitation Details</string>
+    <string name="invitation_details_property_name">Property Name</string>
+    <string name="num_bdrms_inv_details"> 0 </string>
+    <string name="num_baths_inv_details"> 0 </string>
+
+
     <string name="search_filter_title">Search and Filter</string>
     <string name="min"> min</string>
     <string name="max"> max</string>
