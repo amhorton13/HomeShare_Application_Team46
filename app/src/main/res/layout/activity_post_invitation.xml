@@ -98,19 +98,69 @@
             app:layout_constraintTop_toTopOf="parent"
             android:onClick="radioButtonhandler"/>
 
-        <EditText
-            android:id="@+id/rent_price"
-            android:layout_width="164dp"
-            android:layout_height="46dp"
-            android:layout_marginTop="260dp"
-            android:ems="10"
-            android:hint="@string/rent_price"
-            android:inputType="number"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.151"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
     </RadioGroup>
+
+    <TextView
+        android:id="@+id/schoolYear"
+        android:layout_width="83dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="172dp"
+        android:text="School Year"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.118"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+    android:id="@+id/spinner_schoolyear"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="338dp"
+    android:spinnerMode="dropdown"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent" />
+
+
+    <EditText
+        android:id="@+id/num_bdrm"
+        android:layout_width="164dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="260dp"
+        android:ems="10"
+        android:hint="@string/num_bdrm"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.151"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/num_bath"
+        android:layout_width="164dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="260dp"
+        android:ems="10"
+        android:hint="@string/num_bath"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.151"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/rent_price"
+        android:layout_width="164dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="260dp"
+        android:ems="10"
+        android:hint="@string/rent_price"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.151"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/address"
@@ -123,6 +173,19 @@
         android:maxLines="2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.194"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/postbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="684dp"
+        android:backgroundTint="#D500F9"
+        android:onClick="postInvitationHandler"
+        android:text="Post Invitation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.425"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

@@ -4,6 +4,19 @@
     <string name="create_invitation_title">Create Invitation</string>
     <string name="property_name"> Name the property</string>
     <string name="rent_price"> Rent per month</string>
+    <string name="num_bdrm"> bdrms</string>
+    <string name="num_bath"> baths</string>
     <string name="address"> address</string>
+    <string-array name="schoolYears">
+        <item>Freshman</item>
+        <item>Sophomore</item>
+        <item>Junior</item>
+        <item>Senior</item>
+        <item>Graduate</item>
+    </string-array>
+
+    <string name="search_filter_title">Search and Filter</string>
+    <string name="min"> min</string>
+    <string name="max"> max</string>
 
 </resources>
