@@ -4,9 +4,9 @@
     <string name="create_invitation_title">Create Invitation</string>
     <string name="property_name"> Name the property</string>
     <string name="rent_price"> Rent per month</string>
-    <string name="num_bdrm"> bdrms</string>
-    <string name="num_bath"> baths</string>
-    <string name="address"> address</string>
+    <string name="num_bdrm"> bdrms </string>
+    <string name="num_bath"> baths </string>
+    <string name="address"> address </string>
     <string-array name="schoolYears">
         <item>Freshman</item>
         <item>Sophomore</item>
@@ -19,6 +19,9 @@
     <string name="invitation_details_property_name">Property Name</string>
     <string name="num_bdrms_inv_details"> 0 </string>
     <string name="num_baths_inv_details"> 0 </string>
+    <string name="gender_inv_details"> Gender </string>
+    <string name="schoolyear_inv_details"> Freshman </string>
+    <string name="address_inv_details"> addy </string>
 
 
     <string name="search_filter_title">Search and Filter</string>

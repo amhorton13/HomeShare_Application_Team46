@@ -7,7 +7,7 @@
     tools:context=".InvitationDetails">
 
     <TextView
-        android:id="@+id/create_invitation_title"
+        android:id="@+id/invitation_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
@@ -37,7 +37,7 @@
         android:layout_width="83dp"
         android:layout_height="32dp"
         android:layout_marginTop="172dp"
-        android:text="Gender"
+        android:text="@string/gender_inv_details"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.118"
@@ -49,7 +49,7 @@
         android:layout_width="83dp"
         android:layout_height="32dp"
         android:layout_marginTop="172dp"
-        android:text="School Year"
+        android:text="@string/schoolyear_inv_details"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.118"
@@ -97,7 +97,7 @@
         android:layout_width="83dp"
         android:layout_height="32dp"
         android:layout_marginTop="172dp"
-        android:text= "$1500"
+        android:text= "@string/address_inv_details"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.118"
