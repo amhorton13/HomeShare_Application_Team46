@@ -74,7 +74,7 @@
             app:layout_constraintHorizontal_bias="0.655"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:onClick="radioButtonhandler"/>
+            android:onClick="radioButtonHandler"/>
 
         <RadioButton
             android:id="@+id/OtherRadioButton"
@@ -85,7 +85,7 @@
             app:layout_constraintHorizontal_bias="0.849"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:onClick="radioButtonhandler"/>
+            android:onClick="radioButtonHandler"/>
 
         <RadioButton
             android:id="@+id/AllGenderRadioButton"
@@ -96,7 +96,7 @@
             app:layout_constraintHorizontal_bias="0.949"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:onClick="radioButtonhandler"/>
+            android:onClick="radioButtonHandler"/>
 
     </RadioGroup>
 

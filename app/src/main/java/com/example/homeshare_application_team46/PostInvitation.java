@@ -7,12 +7,19 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import android.os.Bundle;
 
 public class PostInvitation extends AppCompatActivity {
+
+    String propertyName;
+    String num_bdrm;
+    String num_bath;
+    String rent_price;
+    String address;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +30,30 @@ public class PostInvitation extends AppCompatActivity {
         ArrayAdapter<CharSequence>adapter=ArrayAdapter.createFromResource(this, R.array.schoolYears, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
         spinnerSchoolYear.setAdapter(adapter);
+
+        EditText nameEditText = (EditText) findViewById(R.id.names);
+        propertyName = nameEditText.getText().toString();
+
+        // TODO: handle radio button value to get the gender
+
+
+        EditText bdrmEditText = (EditText) findViewById(R.id.num_bdrm);
+        num_bdrm = nameEditText.getText().toString();
+
+        EditText bathEditText = (EditText) findViewById(R.id.num_bath);
+        num_bath = nameEditText.getText().toString();
+
+        EditText rentEditText = (EditText) findViewById(R.id.rent_price);
+        rent_price = nameEditText.getText().toString();
+
+        EditText addressEditText = (EditText) findViewById(R.id.address);
+        address = nameEditText.getText().toString();
+
+
+    }
+
+    public void radioButtonHandler(View view){
+        //figure out how to find which radio button is checked
     }
 
     public void postInvitationHandler(View view){
@@ -30,6 +61,12 @@ public class PostInvitation extends AppCompatActivity {
             so that after the intent sends the app back to the main feed, the new post will be included */
 
         Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("propertyname", propertyName);
+        intent.putExtra("numberbedrooms", num_bdrm);
+        intent.putExtra("numberbaths", num_bath);
+        intent.putExtra("rent", rent_price);
+        intent.putExtra("address", address);
+
         startActivity(intent);
 
     }
