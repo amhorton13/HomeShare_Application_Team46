@@ -57,7 +57,9 @@ public class SearchAndFilter extends AppCompatActivity {
 
         Intent intent = new Intent(this, MainActivity.class);
 
-        intent.putExtra("maxbedrooms", min_bdrm);
+        intent.putExtra("action", "filtering");
+
+        intent.putExtra("maxbedrooms", max_bdrm);
         intent.putExtra("minbedrooms", min_bdrm);
         intent.putExtra("minbaths", min_bath);
         intent.putExtra("maxbaths", max_bath);

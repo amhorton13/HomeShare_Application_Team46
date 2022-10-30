@@ -61,6 +61,10 @@ public class PostInvitation extends AppCompatActivity {
             so that after the intent sends the app back to the main feed, the new post will be included */
 
         Intent intent = new Intent(this, MainActivity.class);
+
+        // added an action definition to the intent so main knows to add invite or filter
+        intent.putExtra("action", "postInvite");
+
         intent.putExtra("propertyname", propertyName);
         intent.putExtra("numberbedrooms", num_bdrm);
         intent.putExtra("numberbaths", num_bath);
