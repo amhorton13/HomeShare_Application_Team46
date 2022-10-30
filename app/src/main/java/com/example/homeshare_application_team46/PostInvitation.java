@@ -38,16 +38,16 @@ public class PostInvitation extends AppCompatActivity {
 
 
         EditText bdrmEditText = (EditText) findViewById(R.id.num_bdrm);
-        num_bdrm = nameEditText.getText().toString();
+        num_bdrm = bdrmEditText.getText().toString();
 
         EditText bathEditText = (EditText) findViewById(R.id.num_bath);
-        num_bath = nameEditText.getText().toString();
+        num_bath = bathEditText.getText().toString();
 
         EditText rentEditText = (EditText) findViewById(R.id.rent_price);
-        rent_price = nameEditText.getText().toString();
+        rent_price = rentEditText.getText().toString();
 
         EditText addressEditText = (EditText) findViewById(R.id.address);
-        address = nameEditText.getText().toString();
+        address = addressEditText.getText().toString();
 
 
     }
@@ -66,6 +66,7 @@ public class PostInvitation extends AppCompatActivity {
         intent.putExtra("numberbaths", num_bath);
         intent.putExtra("rent", rent_price);
         intent.putExtra("address", address);
+        //TODO: add extra for gender when radio button is figured out
 
         startActivity(intent);
 
