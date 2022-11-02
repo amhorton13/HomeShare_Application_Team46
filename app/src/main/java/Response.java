@@ -1,11 +1,11 @@
 public class Response {
-    private user user;
+    private User user;
     private int response_id;
-    private invitation invite;
+    private Invitation invite;
     private boolean accepted;
     private boolean declined;
 
-    public user getUser() {
+    public User getUser() {
         return user;
     }
 

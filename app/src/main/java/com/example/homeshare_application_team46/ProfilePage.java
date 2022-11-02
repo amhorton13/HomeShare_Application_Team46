@@ -11,10 +11,9 @@ public class ProfilePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_page);
 
-        /*TODO: Get the extras from the intent created in invitation details when
-           "respond" is clicked, use the extras to add the invitation to the list/database
-           of invitations a user has responded to and display them on the users profile
-           along with any profile info
-         */
+        //TODO: Query DB using username from intent, fill in information to be used by profile page
+
+        //Example Data
+
     }
 }

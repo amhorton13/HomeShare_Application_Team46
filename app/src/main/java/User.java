@@ -1,16 +1,27 @@
 import java.util.ArrayList;
 
-public class user {
+public class User {
 
     private int user_id;
     private String username;
     private String password;
-    private String school_year;
+    private String age;
     private String biography;
     private ArrayList<String> user_interests;
 
-    private ArrayList<invitation> user_invitations;
-    private ArrayList<invitation> invitations_responded_to;
+    private ArrayList<Invitation> user_invitations;
+    private ArrayList<Invitation> invitations_responded_to;
+
+    public User(int user_id, String username, String password, String age, String biography){
+        this.user_id = user_id;
+        this.username = username;
+        this.password = password;
+        this.age = age;
+        this.biography = biography;
+        user_interests = new ArrayList<>();
+        user_invitations = new ArrayList<>();
+        invitations_responded_to = new ArrayList<>();
+    }
 
     public void setBiography(String biography) {
         this.biography = biography;
@@ -36,12 +47,12 @@ public class user {
         return username;
     }
 
-    public void setSchool_year(String school_year) {
-        this.school_year = school_year;
+    public void setAge(String age) {
+        this.age = age;
     }
 
-    public String getSchool_year() {
-        return school_year;
+    public String getAge() {
+        return age;
     }
 
     public void setUser_id(int user_id) {
@@ -58,6 +69,14 @@ public class user {
 
     public ArrayList<String> getUser_interests() {
         return user_interests;
+    }
+
+    public void addInvitation(Invitation invite){
+        user_invitations.add(invite);
+    }
+
+    public void addRespondedTo(Invitation invite){
+        invitations_responded_to.add(invite);
     }
 }
 
