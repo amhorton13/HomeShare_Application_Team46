@@ -55,17 +55,17 @@ public class SearchAndFilter extends AppCompatActivity {
         /* TODO: update the filters attached to the main activity feed so that
             after intent returns to main page the feed is filtered */
 
-        Intent intent = new Intent(this, MainActivity.class);
-
-        intent.putExtra("action", "filtering");
-
-        intent.putExtra("maxbedrooms", max_bdrm);
-        intent.putExtra("minbedrooms", min_bdrm);
-        intent.putExtra("minbaths", min_bath);
-        intent.putExtra("maxbaths", max_bath);
-        intent.putExtra("minrent", min_rent);
-        intent.putExtra("maxrent", max_rent);
-
-        startActivity(intent);
+//        Intent intent = new Intent(this, MainActivity.class);
+//
+//        intent.putExtra("action", "filtering");
+//
+//        intent.putExtra("maxbedrooms", max_bdrm);
+//        intent.putExtra("minbedrooms", min_bdrm);
+//        intent.putExtra("minbaths", min_bath);
+//        intent.putExtra("maxbaths", max_bath);
+//        intent.putExtra("minrent", min_rent);
+//        intent.putExtra("maxrent", max_rent);
+//
+//        startActivity(intent);
     }
 }

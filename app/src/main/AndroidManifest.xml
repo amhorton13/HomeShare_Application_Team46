@@ -21,9 +21,12 @@
             android:exported="false" />
         <activity
             android:name=".ProfilePage"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".PostInvitation"
+            android:exported="false" />
+        <activity
+            android:name=".RegisterPage"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
