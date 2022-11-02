@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("message");
 
-        myRef.setValue("Hello, World!");
+        myRef.setValue("Hello, Wold!");
 
         /*
            TODO: Get all the extras from the intents and use them to add an invitation
