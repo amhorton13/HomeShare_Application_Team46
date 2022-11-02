@@ -1,3 +1,5 @@
+package com.example.homeshare_application_team46;
+
 import java.util.ArrayList;
 
 public class User {
@@ -5,14 +7,14 @@ public class User {
     private int user_id;
     private String username;
     private String password;
-    private String age;
+    private int age;
     private String biography;
     private ArrayList<String> user_interests;
 
     private ArrayList<Invitation> user_invitations;
     private ArrayList<Invitation> invitations_responded_to;
 
-    public User(int user_id, String username, String password, String age, String biography){
+    public User(int user_id, String username, String password, int age, String biography){
         this.user_id = user_id;
         this.username = username;
         this.password = password;
@@ -47,11 +49,11 @@ public class User {
         return username;
     }
 
-    public void setAge(String age) {
+    public void setAge(int age) {
         this.age = age;
     }
 
-    public String getAge() {
+    public int getAge() {
         return age;
     }
 

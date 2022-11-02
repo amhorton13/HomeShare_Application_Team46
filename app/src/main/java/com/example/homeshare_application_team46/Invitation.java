@@ -1,3 +1,5 @@
+package com.example.homeshare_application_team46;
+
 import java.util.ArrayList;
 import java.util.Date;
 

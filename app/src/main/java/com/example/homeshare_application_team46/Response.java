@@ -1,3 +1,5 @@
+package com.example.homeshare_application_team46;
+
 public class Response {
     private User user;
     private int response_id;
