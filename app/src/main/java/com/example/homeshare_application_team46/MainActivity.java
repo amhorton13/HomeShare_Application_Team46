@@ -14,6 +14,8 @@ import com.google.firebase.database.DatabaseError;
 
 public class MainActivity extends AppCompatActivity {
 
+    FirebaseDatabase database;
+    DatabaseReference myRef;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,10 +23,10 @@ public class MainActivity extends AppCompatActivity {
 
         // Firebase demo
         // Write a message to the database
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("message");
+        database = FirebaseDatabase.getInstance();
+        myRef = database.getReference("message");
 
-        myRef.setValue("Hello, Wold!");
+        myRef.setValue("Helo, Wold!");
 
         /*
            TODO: Get all the extras from the intents and use them to add an invitation
