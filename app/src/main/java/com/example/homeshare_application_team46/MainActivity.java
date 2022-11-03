@@ -38,15 +38,13 @@ public class MainActivity extends AppCompatActivity {
         // Firebase demo
         // Write a message to the database
         database = FirebaseDatabase.getInstance();
-        myRef = database.getReference().child("demo");
-//        for (int i = 0; i<10;i++) {
-//            String id = i+"";
-//            myRef.child("demo").child(id).setValue("TEST");
-//        }
+        myRef = database.getReference().child("message");
+        myRef.setValue("main working");
+
         User testUser = new User("1", "JamesHarris@usc.edu", "Jameswah", "i like cs", 12, "idk");
         String age = "age";
-        myRef.child(testUser.getUser_id()).child(age).setValue(testUser.getAge());
-//        myRef.setValue("hi");
+//        myRef.child(testUser.getUser_id()).child(age).setValue(1);
+
 
         ArrayList<Invitation> invitations = new ArrayList<>();
         Intent intent = getIntent();
