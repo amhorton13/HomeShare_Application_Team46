@@ -87,8 +87,12 @@ public class User {
         user_invitations.add(invite);
     }
 
-    public void addRespondedTo(Invitation invite){
+    public ArrayList<Invitation> getInvitations() {return user_invitations;}
+
+    public void addResponse(Invitation invite){
         invitations_responded_to.add(invite);
     }
+
+    public ArrayList<Invitation> getResponses() {return invitations_responded_to;}
 }
 

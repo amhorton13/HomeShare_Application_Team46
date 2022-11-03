@@ -4,14 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height= "match_parent"
-    tools:context=".ProfilePage">
+    tools:context=".ProfilePage"
+    android:gravity="center_horizontal">
 
     <TextView
         android:id="@+id/profilePic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="168dp"
-        android:layout_marginTop="65dp"
+        android:layout_marginTop="50dp"
         android:text="😃"
         android:textSize="60sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,12 +20,49 @@
 
     <TextView
         android:id="@+id/username"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text = "JamesHarris"
-        android:gravity = "center"
+        android:gravity="center_horizontal"
         android:textSize="30sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profilePic" />
+
+    <Button
+        android:id="@+id/activeInv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text = "Active Invitations"
+        android:gravity="center_horizontal"
+        android:textSize="20sp"
+        app:layout_constraintWidth_percent=".5"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/username" />
+
+    <Button
+        android:id="@+id/responses"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text = "Active Responses"
+        android:gravity="center_horizontal"
+        android:textSize="20sp"
+        app:layout_constraintWidth_percent=".5"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/username" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/background_grey"
+        app:layout_constraintTop_toBottomOf="@+id/responses"
+        app:layout_constraintBottom_toBottomOf="parent">
+        <LinearLayout
+            android:id="@+id/scrollLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
