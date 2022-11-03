@@ -10,7 +10,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
+import java.io.*;
+import java.util.*;
+import android.os.Handler;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
@@ -25,6 +27,9 @@ public class MainActivity extends AppCompatActivity {
 
     private FirebaseDatabase database;
     private DatabaseReference myRef;
+
+    private TextView login;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,6 +80,12 @@ public class MainActivity extends AppCompatActivity {
             layout.addView(tv);
         }
 
+
+
+    }
+    public void openLogin(View view){
+        Intent intent = new Intent(view.getContext(), LoginPage.class);
+        startActivity(intent);
     }
 
     //TODO: figure out getting inviteID from view and adding to intent
@@ -83,4 +94,6 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra("inviteID", 1);
         startActivity(intent);
     }
+
+
 }
