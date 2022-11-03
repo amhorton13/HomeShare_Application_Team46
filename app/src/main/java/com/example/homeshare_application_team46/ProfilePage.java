@@ -77,7 +77,7 @@ public class ProfilePage extends AppCompatActivity {
         startActivity(intent);
     }
     //TODO: figure out getting inviteID from view and adding to intent
-    public void openInvite(View view){
+    public void openInvitation(View view){
         Intent intent = new Intent(this, InvitationDetails.class);
         intent.putExtra("inviteID", 1);
         startActivity(intent);

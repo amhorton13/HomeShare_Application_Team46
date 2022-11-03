@@ -5,5 +5,5 @@
     android:layout_height="wrap_content"
     android:background="@drawable/rounded_corner"
     android:textSize="30sp"
-    android:onClick="openInvite" >
+    android:onClick="openInvitation" >
 </TextView>
