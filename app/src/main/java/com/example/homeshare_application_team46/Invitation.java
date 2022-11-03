@@ -25,6 +25,14 @@ public class Invitation {
         this.num_bath = num_bath;
     }
 
+    public User getPoster(){ return poster;}
+    public int getInvitation_id(){ return invitation_id;}
+    public Date getDate_and_time(){return date_and_time;}
+    public int getPrice(){return price;}
+    public String getLocation(){return location;}
+    public int getNum_bdrm(){return num_bdrm;}
+    public int getNum_bath(){return num_bath;}
+
     public void post(){
 
     }

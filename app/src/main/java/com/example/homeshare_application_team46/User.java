@@ -39,7 +39,7 @@ public class User {
         this.email = email;
     }
 
-    public String getBEmail() {
+    public String getEmail() {
         return email;
     }
 
