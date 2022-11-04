@@ -31,8 +31,8 @@ public class ProfilePage extends AppCompatActivity {
         //TODO: Query DB using username from intent, fill in information to be used by profile page
 
         //Test Data
-        User testUser = new User("1", "JamesHarris@usc.edu", "Jameswah", "i like cs", 12, "idk");
-        User testUser2 = new User("2", "jj@usc.edu", "jjVal", "peepeepoopoo", 43, "milfs");
+        User testUser = new User("JamesHarris@usc.edu", "Jameswah", "i like cs", 12, "idk");
+        User testUser2 = new User("jj@usc.edu", "jjVal", "peepeepoopoo", 43, "milfs");
 
         testUser.addInvitation(new Invitation(testUser, 1, new Date(), 1500, "USC", 2, 2));
         testUser.addInvitation(new Invitation(testUser, 2, new Date(), 2000, "Orchard", 1, 1));

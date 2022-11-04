@@ -30,6 +30,16 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView login;
 
+    private String someVariable;
+
+    public String getSomeVariable() {
+        return someVariable;
+    }
+
+    public void setSomeVariable(String someVariable) {
+        this.someVariable = someVariable;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         myRef = database.getReference().child("message");
         myRef.setValue("main working");
 
-        User testUser = new User("1", "JamesHarris@usc.edu", "Jameswah", "i like cs", 12, "idk");
+
         String age = "age";
 //        myRef.child(testUser.getUser_id()).child(age).setValue(1);
 
@@ -62,7 +72,8 @@ public class MainActivity extends AppCompatActivity {
         }
 
         //Test Data
-        User testUser2 = new User("2", "jj@usc.edu", "jjVal", "peepeepoopoo", 43, "milfs");
+        User testUser = new User("jj@usc.edu", "jjVal", "peepeepoopoo", 43, "milfs");
+        User testUser2 = new User("jj@usc.edu", "jjVal", "peepeepoopoo", 43, "milfs");
         invitations.add(new Invitation(testUser, 1, new Date(), 1500, "USC", 2, 2));
         invitations.add(new Invitation(testUser, 2, new Date(), 2000, "Orchard", 1, 1));
         invitations.add(new Invitation(testUser2, 3, new Date(), 2300, "The Moon", 4, 2));

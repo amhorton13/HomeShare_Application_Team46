@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class User {
 
-    private String user_id;
+
     private String email;
     private String username;
     private String password;
@@ -15,8 +15,8 @@ public class User {
     private ArrayList<Invitation> user_invitations;
     private ArrayList<Invitation> invitations_responded_to;
 
-    public User(String user_id, String email, String username, String password, int age, String biography){
-        this.user_id = user_id;
+    public User(String email, String username, String password, int age, String biography){
+
         this.email = email;
         this.username = username;
         this.password = password;
@@ -67,13 +67,7 @@ public class User {
         return age;
     }
 
-    public void setUser_id(String user_id) {
-        this.user_id = user_id;
-    }
 
-    public String getUser_id() {
-        return user_id;
-    }
 
     public void setUser_interests(ArrayList<String> user_interests) {
         this.user_interests = user_interests;
