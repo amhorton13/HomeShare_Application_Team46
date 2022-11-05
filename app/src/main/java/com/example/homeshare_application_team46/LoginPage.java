@@ -103,14 +103,20 @@ public class LoginPage  extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
-                            System.out.println(user.getUid());
-//                            updateUI(user);
+                            System.out.println("Login page user: " + user.getUid());
+
+
+
+                            // Send intent to Main Activity
+                            Intent intent = new Intent(LoginPage.this, MainActivity.class);
+                            intent.putExtra("userID", user.getUid());
+                            startActivity(intent);
+//
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
-//                            Toast.makeText(EmailPasswordActivity.this, "Authentication failed.",
-//                                    Toast.LENGTH_SHORT).show();
-//                            updateUI(null);
+//
+                            toastMessage("Account not found! Click on Register Now!");
                         }
                     }
                 });

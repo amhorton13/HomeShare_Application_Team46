@@ -59,10 +59,11 @@
         android:layout_below="@+id/password"
         android:layout_alignEnd="@+id/password"
         android:layout_marginTop="1dp"
-        android:layout_marginEnd="-151dp"
-        android:gravity="bottom"
-        android:text="Don't have a profile? Register Now!"
-        android:onClick="openRegister"/>
+        android:layout_marginEnd="-197dp"
+        android:gravity="center"
+
+        android:onClick="openRegister"
+        android:text="Don't have a profile? Register Now!" />
 
     <Button
         android:id="@+id/btnSubmit"
