@@ -34,24 +34,10 @@ public class MainActivity extends AppCompatActivity implements MyCallback {
     private FirebaseDatabase database;
     private DatabaseReference myRef, userRef;
 
-    private TextView login;
-
-    private String someVariable;
-
-    public String getSomeVariable() {
-        return someVariable;
-    }
-
-    public void setSomeVariable(String someVariable) {
-        this.someVariable = someVariable;
-    }
-
     // Callback
     User loggedInUser = null;
     private static final String TAG = "CallbackActivity";
-
     private FirebaseAuth mAuth;
-
     String userID;
 
 
@@ -60,11 +46,9 @@ public class MainActivity extends AppCompatActivity implements MyCallback {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Firebase demo
+
         // Write a message to the database
         database = FirebaseDatabase.getInstance();
-
-
 
 
         ArrayList<Invitation> invitations = new ArrayList<>();
@@ -109,6 +93,7 @@ public class MainActivity extends AppCompatActivity implements MyCallback {
         System.out.println("Main Activity user: " + user.getUid());
         userID = user.getUid();
 
+        // Callback once async call is back
         readData(new MyCallback() {
             @Override
             public void onCallback(String value) {
@@ -118,22 +103,19 @@ public class MainActivity extends AppCompatActivity implements MyCallback {
             @Override
             public void onCallback(String email, String username, String password, int age, String biography) {
 
-                System.out.println("CALLBACK LOGGED USER" + loggedInUser);
+
                 System.out.println("CALLBACK LOGGED email" + email);
                 System.out.println("CALLBACK LOGGED userN" + username);
                 System.out.println("CALLBACK LOGGED password" + password);
                 System.out.println("CALLBACK LOGGED age" + age);
                 System.out.println("CALLBACK LOGGED bio" + biography);
+                loggedInUser = new User(email, username, password, age, biography);
+                System.out.println("CALLBACK LOGGED bio" + loggedInUser.getEmail());
             }
 
         });
 
-
-
-
     }
-
-
 
     public void openLogin(View view){
         Intent intent = new Intent(view.getContext(), LoginPage.class);

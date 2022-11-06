@@ -1,5 +1,6 @@
 package com.example.homeshare_application_team46;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -81,49 +82,6 @@ public class RegisterPage extends AppCompatActivity {
                 createUser(email, password, userName, age, bio);
 
 
-//                // Reading info from database and checking if there are duplicate userName
-//                Integer finalAge = age;
-//                myRef.addValueEventListener(new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                        for (DataSnapshot x: snapshot.getChildren()) {
-//                            for (DataSnapshot t: x.getChildren()) {
-//                                if (t.getKey().equals("username")) {
-//                                    if (t.getValue().equals(userName)) {
-//                                        System.out.println("duplicate ALERT");
-//                                        isNameDup = true;
-//                                    }
-//                                }
-//                            }
-//                        }
-//
-//
-////                        addToDatabase(isNameDup, userName, email, password, finalAge, bio, key);
-//                            //Todo Create an intent into the main activity
-//                            // Todo: pass in the user data into the next intent
-//
-//
-//                    }
-//
-//                    @Override
-//                    public void onCancelled(@NonNull DatabaseError error) {
-//
-//                        Log.d("Reading ing", "Failed to read in value");
-//                    }
-//                });
-//
-//
-//
-//                Log.d(TAG, "onClick: Attempting to submit to database: \n" +
-//                        "name: " + userName + "\n" +
-//                        "email: " + email + "\n" +
-//                        "password: " + password + "\n" +
-//                        "age: " + age + "\n" +
-//                        "bio: " + bio + "\n"
-//                );
-//
-//            }
-//        });
             }
         });
 
@@ -140,6 +98,11 @@ public class RegisterPage extends AppCompatActivity {
             mPassword.setText("");
             mAge.setText("");
             mBio.setText("");
+
+            // Send intent to Main Activity
+            Intent intent = new Intent(RegisterPage.this, LoginPage.class);
+            startActivity(intent);
+
         }else {
             if (isNameDup) {
                 toastMessage("UserName already in use dummy, try again");
