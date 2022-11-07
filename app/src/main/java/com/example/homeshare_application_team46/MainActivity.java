@@ -43,7 +43,6 @@ public class MainActivity extends AppCompatActivity implements MyCallback {
     // Update loginUI
     private TextView loginText;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
