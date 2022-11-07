@@ -73,9 +73,9 @@ public class MainActivity extends AppCompatActivity implements MyCallback {
         //Test Data
         User testUser = new User("jj@usc.edu", "jjVal", "peepeepoopoo", 43, "milfs");
         User testUser2 = new User("jj@usc.edu", "jjVal", "peepeepoopoo", 43, "milfs");
-        invitations.add(new Invitation(testUser, 1, new Date(), 1500, "USC", 2, 2));
-        invitations.add(new Invitation(testUser, 2, new Date(), 2000, "Orchard", 1, 1));
-        invitations.add(new Invitation(testUser2, 3, new Date(), 2300, "The Moon", 4, 2));
+        invitations.add(new Invitation(testUser, "moon", 1, "jan", 1500, "USC", 2, 2));
+        invitations.add(new Invitation(testUser, "lorenzo", 2,  "october", 2000, "Orchard", 1, 1));
+        invitations.add(new Invitation(testUser2, "mo", 3, "december", 2300, "The Moon", 4, 2));
 
         //display invitations (ugly)
         LinearLayout layout = (LinearLayout) findViewById(R.id.scrollLayout);

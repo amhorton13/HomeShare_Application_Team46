@@ -49,7 +49,32 @@ public class PostInvitation extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
 
+        btnSubmit.setOnClickListener(new View.OnClickListener() {
 
+            @Override
+            public void onClick(View view) {
+
+                // Fields inputted by user
+                String propName = mPropName.getText().toString();
+                String address = mAddress.getText().toString();
+                String price = mPrice.getText().toString();
+                String numBeds = mNumBeds.getText().toString();
+                String numBaths = mNumBaths.getText().toString();
+                String Date = mDate.getText().toString();
+
+//                Integer age = 0;
+//                try {
+//                    age = Integer.parseInt(mAge.getText().toString());
+//                } catch (NumberFormatException nfe) {
+//                    System.out.println("Could not parse " + nfe);
+//                }
+//                isNameDup = false;
+//
+//                createUser(email, password, userName, age, bio);
+
+
+            }
+        });
 
     }
 
