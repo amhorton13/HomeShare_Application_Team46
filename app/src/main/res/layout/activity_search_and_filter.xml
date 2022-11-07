@@ -1,179 +1,178 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height= "match_parent"
+    android:layout_height="match_parent"
     tools:context=".SearchAndFilter">
 
     <TextView
         android:id="@+id/search_filter_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
         android:text="@string/search_filter_title"
         android:textColor="#D500F9"
         android:textSize="28sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.436"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+       />
 
     <TextView
         android:id="@+id/PriceRangeTitle"
-        android:layout_width="83dp"
-        android:layout_height="32dp"
-        android:layout_marginTop="172dp"
-        android:text="Enter Price Range:"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_below="@+id/search_filter_title"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="10dp"
+        android:gravity="bottom"
+        android:text="Price Range:"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.118"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        />
 
     <EditText
         android:id="@+id/priceMin"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="96dp"
+        android:layout_below="@+id/search_filter_title"
+        android:layout_toRightOf="@+id/PriceRangeTitle"
+        android:layout_marginTop="10dp"
         android:ems="10"
         android:hint="@string/min"
         android:inputType="number"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.184"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        />
 
     <EditText
         android:id="@+id/priceMax"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="96dp"
+        android:layout_below="@+id/search_filter_title"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@+id/priceMin"
         android:ems="10"
         android:hint="@string/max"
         android:inputType="number"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.184"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        />
+
+    <TextView
+        android:id="@+id/BdrmRangeTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_below="@+id/PriceRangeTitle"
+        android:gravity="bottom"
+        android:text="Bdrm Range:"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="5dp"
+        android:textSize="18sp"
+        />
 
     <EditText
         android:id="@+id/bdrmMin"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="96dp"
+        android:layout_below="@+id/PriceRangeTitle"
+        android:layout_toRightOf="@+id/BdrmRangeTitle"
+        android:layout_marginTop="5dp"
         android:ems="10"
         android:hint="@string/min"
         android:inputType="number"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.184"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+       />
 
     <EditText
         android:id="@+id/bdrmMax"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="96dp"
+        android:layout_below="@+id/PriceRangeTitle"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@+id/bdrmMin"
         android:ems="10"
         android:hint="@string/max"
         android:inputType="number"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.184"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        />
+
+    <TextView
+        android:id="@+id/BathRangeTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_below="@+id/BdrmRangeTitle"
+        android:gravity="bottom"
+        android:text="Bath Range:"
+        android:layout_marginStart="45dp"
+        android:textSize="18sp"
+        />
 
     <EditText
         android:id="@+id/bathMin"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="96dp"
+        android:layout_below="@+id/BdrmRangeTitle"
+        android:layout_toRightOf="@+id/BathRangeTitle"
         android:ems="10"
         android:hint="@string/min"
         android:inputType="number"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.184"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        />
 
     <EditText
         android:id="@+id/bathMax"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="96dp"
+        android:layout_toRightOf="@+id/bathMin"
+        android:layout_below="@+id/BdrmRangeTitle"
         android:ems="10"
         android:hint="@string/max"
         android:inputType="number"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.184"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        />
 
     <TextView
         android:id="@+id/genderFilterTitle"
-        android:layout_width="83dp"
-        android:layout_height="32dp"
-        android:layout_marginTop="172dp"
-        android:text="Gender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select Gender:"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="10dp"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.118"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_below="@+id/BathRangeTitle"
+        />
 
     <RadioGroup
         android:id="@+id/genderRadioGroup"
-        android:layout_width="205dp"
-        android:layout_height="32dp"
-        android:layout_marginTop="172dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.834"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_below="@+id/genderFilterTitle"
+        android:layout_marginStart="105dp"
+        >
 
 
         <RadioButton
             android:id="@+id/MaleRadioButton"
-            android:layout_width="45dp"
-            android:layout_height="33dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/genderFilterTitle"
             android:text="M"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             android:onClick="radioButtonhandler"/>
 
         <RadioButton
             android:id="@+id/FemaleRadioButton"
-            android:layout_width="45dp"
-            android:layout_height="33dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/genderRadioGroup"
             android:text="F"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.655"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             android:onClick="radioButtonhandler"/>
 
         <RadioButton
             android:id="@+id/OtherRadioButton"
-            android:layout_width="96dp"
-            android:layout_height="33dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/genderRadioGroup"
             android:text="Other"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.849"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             android:onClick="radioButtonhandler"/>
 
         <RadioButton
             android:id="@+id/AllGenderRadioButton"
-            android:layout_width="96dp"
-            android:layout_height="33dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/genderRadioGroup"
             android:text="All Genders"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.949"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             android:onClick="radioButtonhandler"/>
 
     </RadioGroup>
@@ -184,21 +183,17 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="338dp"
         android:spinnerMode="dropdown"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        />
 
     <Button
         android:id="@+id/ApplyFiltersButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="684dp"
+        android:layout_marginTop="650dp"
         android:backgroundTint="#D500F9"
         android:onClick="applyFiltersHandler"
+        android:layout_centerHorizontal="true"
         android:text="Apply Filters"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.425"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>
