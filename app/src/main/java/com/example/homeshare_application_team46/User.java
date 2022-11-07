@@ -101,7 +101,7 @@ public class User {
 
     public static User queryUser(String userID){
         DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();;
-        mDatabase.child("users").child(userID).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+        mDatabase.child("Users").child(userID).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 if (!task.isSuccessful()) {
@@ -110,7 +110,7 @@ public class User {
                 else {
                     //Log.d("firebase", String.valueOf(task.getResult().getValue()));
                     for(DataSnapshot snap : task.getResult().getChildren()){
-                        System.out.println(snap.getValue());
+                        System.out.println("user queryUser function" + snap.getValue());
                     }
                 }
             }

@@ -113,6 +113,8 @@ public class MainActivity extends AppCompatActivity implements MyCallback {
         System.out.println("Main Activity user: " + user.getUid());
         userID = user.getUid();
         System.out.println("query:");
+        User.queryUser(userID);
+
 
         // Callback once async call is back
         readData(new MyCallback() {
