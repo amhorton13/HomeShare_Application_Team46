@@ -7,73 +7,80 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import android.os.Bundle;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class PostInvitation extends AppCompatActivity {
 
-    String propertyName;
-    String num_bdrm;
-    String num_bath;
-    String rent_price;
-    String address;
+    private EditText mPropName,mAddress,mPrice, mNumBeds, mNumBaths, mDate;
+    private FirebaseDatabase database;
+    private DatabaseReference myRef;
+    private Button btnSubmit;
+    private static final String TAG= "AddToDatabase";
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_invitation);
 
-        Spinner spinnerSchoolYear=findViewById(R.id.spinner_schoolyear);
-        ArrayAdapter<CharSequence>adapter=ArrayAdapter.createFromResource(this, R.array.schoolYears, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
-        spinnerSchoolYear.setAdapter(adapter);
+        // Write a message to the database
+        database = FirebaseDatabase.getInstance();
+        myRef = database.getReference().child("Users");
+        String key = database.getReference("Users").push().getKey();
 
-        EditText nameEditText = (EditText) findViewById(R.id.names);
-        propertyName = nameEditText.getText().toString();
+        btnSubmit = (Button) findViewById(R.id.btnSubmit);
+        mPropName = (EditText) findViewById(R.id.etName);
+        mAddress = (EditText) findViewById(R.id.etAddress);
+        mPrice = (EditText) findViewById(R.id.etPrice);
+        mNumBeds = (EditText) findViewById(R.id.etNumBeds);
+        mNumBaths = (EditText) findViewById(R.id.etNumBaths);
+        mDate = (EditText) findViewById(R.id.etDate);
 
-        // TODO: handle radio button value to get the gender
+        // Initialize Firebase Auth
+        mAuth = FirebaseAuth.getInstance();
 
 
-        EditText bdrmEditText = (EditText) findViewById(R.id.num_bdrm);
-        num_bdrm = bdrmEditText.getText().toString();
-
-        EditText bathEditText = (EditText) findViewById(R.id.num_bath);
-        num_bath = bathEditText.getText().toString();
-
-        EditText rentEditText = (EditText) findViewById(R.id.rent_price);
-        rent_price = rentEditText.getText().toString();
-
-        EditText addressEditText = (EditText) findViewById(R.id.address);
-        address = addressEditText.getText().toString();
 
 
     }
 
-    public void radioButtonHandler(View view){
-        //figure out how to find which radio button is checked
-    }
 
-    public void postInvitationHandler(View view){
-        /* TODO: After posting the invite, update the data structure holding all the invites,
-            so that after the intent sends the app back to the main feed, the new post will be included */
 
-        Intent intent = new Intent(this, MainActivity.class);
+//    public void postInvitationHandler(View view){
+//        /*TODO: After posting the invite, update the data structure holding all the invites,
+//so that after the intent sends the app back to the main feed, the new post will be included */
+//
+//        Intent intent = new Intent(this, MainActivity.class);
+//
+//        // added an action definition to the intent so main knows to add invite or filter
+//        intent.putExtra("action", "postInvite");
+//
+//        intent.putExtra("propertyname", propertyName);
+//        intent.putExtra("numberbedrooms", num_bdrm);
+//        intent.putExtra("numberbaths", num_bath);
+//        intent.putExtra("rent", rent_price);
+//        intent.putExtra("address", address);
+//        //TODO: add extra for gender when radio button is figured out
+//
+//        startActivity(intent);
+//
+//    }
 
-        // added an action definition to the intent so main knows to add invite or filter
-        intent.putExtra("action", "postInvite");
-
-        intent.putExtra("propertyname", propertyName);
-        intent.putExtra("numberbedrooms", num_bdrm);
-        intent.putExtra("numberbaths", num_bath);
-        intent.putExtra("rent", rent_price);
-        intent.putExtra("address", address);
-        //TODO: add extra for gender when radio button is figured out
-
-        startActivity(intent);
-
+    /**
+     * customizable toast
+     *@parammessage
+     */
+    private void toastMessage(String message){
+        Toast.makeText(this,message,Toast.LENGTH_SHORT).show();
     }
 
 }

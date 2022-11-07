@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity implements MyCallback {
         for(Invitation inv : invitations){
             TextView tv = (TextView) li.inflate(R.layout.feed_item, layout, false);
             String text = inv.getNum_bdrm() + " Bed " + inv.getNum_bath() + " Bath near ";
-            text += inv.getLocation() + " for $" + inv.getPrice() + " by " + inv.getPoster().getUsername();
+            text += inv.getAddress() + " for $" + inv.getPrice() + " by " + inv.getPoster().getUsername();
             tv.setText(text);
             layout.addView(tv);
         }
