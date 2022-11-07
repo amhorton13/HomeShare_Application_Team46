@@ -1,5 +1,15 @@
 package com.example.homeshare_application_team46;
 
+import android.util.Log;
+
+import androidx.annotation.NonNull;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -40,6 +50,25 @@ public class Invitation {
 
     public void delete(){
 
+    }
+    public static Invitation queryInvitation(String invitation_id){
+        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();;
+        mDatabase.child("Invitations").child(invitation_id).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (!task.isSuccessful()) {
+                    Log.e("firebase", "Error getting data", task.getException());
+                }
+                else {
+                    //Log.d("firebase", String.valueOf(task.getResult().getValue()));
+                    for(DataSnapshot snap : task.getResult().getChildren()){
+                        System.out.println("invitation queryInvitation function" + snap.getValue());
+                    }
+                }
+            }
+        });
+
+        return null;
     }
 
 }
