@@ -6,7 +6,8 @@
     android:layout_height="wrap_content"
     android:background="@drawable/rounded_corner"
     android:orientation="horizontal"
-    android:gravity="center_vertical">
+    android:gravity="center_vertical"
+    android:onClick="openInvitation">
 
     <TextView
         android:id="@+id/cost"

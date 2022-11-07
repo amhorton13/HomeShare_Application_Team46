@@ -2,6 +2,7 @@ package com.example.homeshare_application_team46;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -48,7 +49,6 @@ public class MainActivity extends AppCompatActivity implements MyCallback {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         // Write a message to the database
         database = FirebaseDatabase.getInstance();
 
@@ -77,15 +77,31 @@ public class MainActivity extends AppCompatActivity implements MyCallback {
         invitations.add(new Invitation(testUser, "lorenzo", 2,  "october", 2000, "Orchard", 1, 1));
         invitations.add(new Invitation(testUser2, "mo", 3, "december", 2300, "The Moon", 4, 2));
 
-        //display invitations (ugly)
+        //display invitations
         LinearLayout layout = (LinearLayout) findViewById(R.id.scrollLayout);
         LayoutInflater li = LayoutInflater.from(this);
         for(Invitation inv : invitations){
-            TextView tv = (TextView) li.inflate(R.layout.feed_item, layout, false);
-            String text = inv.getNum_bdrm() + " Bed " + inv.getNum_bath() + " Bath near ";
-            text += inv.getAddress() + " for $" + inv.getPrice() + " by " + inv.getPoster().getUsername();
-            tv.setText(text);
-            layout.addView(tv);
+            ConstraintLayout item = (ConstraintLayout) li.inflate(R.layout.feed_item, layout, false);
+            item.setTag(inv.getPoster().getUsername());
+
+            //set price
+            TextView price = (TextView) item.getChildAt(0);
+            String pText = "$" + Integer.toString(inv.getPrice());
+            price.setText(pText);
+            //set bedBath
+            TextView bedBath = (TextView) item.getChildAt(2);
+            int numBed = inv.getNum_bdrm();
+            int numBath = inv.getNum_bath();
+            String bbText = Integer.toString(numBed) + " Bed " + Integer.toString(numBath) + " Bath";
+            bedBath.setText(bbText);
+            //set details
+            TextView details = (TextView) item.getChildAt(3);
+            String location = inv.getAddress();
+            String poster = inv.getPoster().getUsername();
+            String dText = location + " by " + poster;
+            details.setText(dText);
+            item.setOnClickListener(this::openInvitation);
+            layout.addView(item);
         }
 
 
@@ -129,7 +145,7 @@ public class MainActivity extends AppCompatActivity implements MyCallback {
     //TODO: figure out getting inviteID from view and adding to intent
     public void openInvitation(View view){
         Intent intent = new Intent(this, InvitationDetails.class);
-        intent.putExtra("inviteID", 1);
+        intent.putExtra("inviteID", (String) view.getTag());
         startActivity(intent);
     }
 
