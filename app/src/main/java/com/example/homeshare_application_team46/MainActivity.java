@@ -40,6 +40,9 @@ public class MainActivity extends AppCompatActivity implements MyCallback {
     private FirebaseAuth mAuth;
     String userID;
 
+    // Update loginUI
+    private TextView loginText;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,6 +106,8 @@ public class MainActivity extends AppCompatActivity implements MyCallback {
             @Override
             public void onCallback(String email, String username, String password, int age, String biography) {
 
+                loginText = findViewById(R.id.login);
+                loginText.setText(username);
 
                 System.out.println("CALLBACK LOGGED email" + email);
                 System.out.println("CALLBACK LOGGED userN" + username);
@@ -130,7 +135,7 @@ public class MainActivity extends AppCompatActivity implements MyCallback {
         startActivity(intent);
     }
 
-    // Recieve data from database and call update UI
+    // Receive data from database and call update UI
     public void readData(MyCallback myCallback) {
         userRef = database.getReference().child("Users").child(userID);
 
