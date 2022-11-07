@@ -108,7 +108,6 @@ public class MainActivity extends AppCompatActivity implements MyCallback {
 
                 loginText = findViewById(R.id.login);
                 loginText.setText(username);
-
                 System.out.println("CALLBACK LOGGED email" + email);
                 System.out.println("CALLBACK LOGGED userN" + username);
                 System.out.println("CALLBACK LOGGED password" + password);
