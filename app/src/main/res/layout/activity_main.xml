@@ -13,7 +13,8 @@
         android:layout_height="150px"
         android:text="NavBar placeholder"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:onClick="openPostInvitation"/>
 
     <TextView
         android:id="@+id/login"
@@ -24,7 +25,7 @@
         android:layout_marginRight="10dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:onClick="openLogin"/>
+        />
 
     <ScrollView
         android:layout_width="match_parent"

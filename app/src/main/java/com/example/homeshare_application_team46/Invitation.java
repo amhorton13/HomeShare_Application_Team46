@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Invitation {
-    private User poster;
-    private int invitation_id;
+    private String poster;
+    private String invitation_id;
     private String date_and_time;
     private String propName;
     private int price;
@@ -15,7 +15,7 @@ public class Invitation {
 
     private ArrayList<Response> responses;
 
-    public Invitation(User poster, String propName, int invitation_id, String date_and_time, int price, String address, int num_bdrm, int num_bath){
+    public Invitation(String poster, String propName, String invitation_id, String date_and_time, int price, String address, int num_bdrm, int num_bath){
         this.poster = poster;
         this.invitation_id = invitation_id;
         this.propName = propName;
@@ -26,8 +26,8 @@ public class Invitation {
         this.num_bath = num_bath;
     }
 
-    public User getPoster(){ return poster;}
-    public int getInvitation_id(){ return invitation_id;}
+    public String getPoster(){ return poster;}
+    public String getInvitation_id(){ return invitation_id;}
     public String getDate_and_time(){return date_and_time;}
     public int getPrice(){return price;}
     public String getAddress(){return address;}

@@ -1,9 +1,11 @@
 package com.example.homeshare_application_team46;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -14,7 +16,11 @@ import android.widget.Toast;
 
 import android.os.Bundle;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -26,6 +32,7 @@ public class PostInvitation extends AppCompatActivity {
     private Button btnSubmit;
     private static final String TAG= "AddToDatabase";
     private FirebaseAuth mAuth;
+    private String userID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +41,8 @@ public class PostInvitation extends AppCompatActivity {
 
         // Write a message to the database
         database = FirebaseDatabase.getInstance();
-        myRef = database.getReference().child("Users");
-        String key = database.getReference("Users").push().getKey();
+        myRef = database.getReference().child("Invitations");
+        String key = database.getReference("Invitations").push().getKey();
 
         btnSubmit = (Button) findViewById(R.id.btnSubmit);
         mPropName = (EditText) findViewById(R.id.etName);
@@ -48,6 +55,12 @@ public class PostInvitation extends AppCompatActivity {
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
 
+         // Create the user that's logged in
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = mAuth.getCurrentUser();
+        System.out.println("Main Activity user: " + user.getUid());
+        userID = user.getUid();
+
 
         btnSubmit.setOnClickListener(new View.OnClickListener() {
 
@@ -57,20 +70,29 @@ public class PostInvitation extends AppCompatActivity {
                 // Fields inputted by user
                 String propName = mPropName.getText().toString();
                 String address = mAddress.getText().toString();
-                String price = mPrice.getText().toString();
-                String numBeds = mNumBeds.getText().toString();
-                String numBaths = mNumBaths.getText().toString();
                 String Date = mDate.getText().toString();
+                String key = database.getReference("Users").push().getKey();
 
-//                Integer age = 0;
-//                try {
-//                    age = Integer.parseInt(mAge.getText().toString());
-//                } catch (NumberFormatException nfe) {
-//                    System.out.println("Could not parse " + nfe);
-//                }
-//                isNameDup = false;
-//
-//                createUser(email, password, userName, age, bio);
+                Integer price = 0;
+                try {
+                    price = Integer.parseInt(mPrice.getText().toString());
+                } catch (NumberFormatException nfe) {
+                    System.out.println("Could not parse " + nfe);
+                }
+                Integer numBeds = 0;
+                try {
+                    numBeds = Integer.parseInt(mNumBeds.getText().toString());
+                } catch (NumberFormatException nfe) {
+                    System.out.println("Could not parse " + nfe);
+                }
+                Integer numBaths = 0;
+                try {
+                    numBaths = Integer.parseInt(mNumBaths.getText().toString());
+                } catch (NumberFormatException nfe) {
+                    System.out.println("Could not parse " + nfe);
+                }
+
+                addToDatabase(key, propName, Date, price, address, numBeds, numBaths );
 
 
             }
@@ -80,25 +102,6 @@ public class PostInvitation extends AppCompatActivity {
 
 
 
-//    public void postInvitationHandler(View view){
-//        /*TODO: After posting the invite, update the data structure holding all the invites,
-//so that after the intent sends the app back to the main feed, the new post will be included */
-//
-//        Intent intent = new Intent(this, MainActivity.class);
-//
-//        // added an action definition to the intent so main knows to add invite or filter
-//        intent.putExtra("action", "postInvite");
-//
-//        intent.putExtra("propertyname", propertyName);
-//        intent.putExtra("numberbedrooms", num_bdrm);
-//        intent.putExtra("numberbaths", num_bath);
-//        intent.putExtra("rent", rent_price);
-//        intent.putExtra("address", address);
-//        //TODO: add extra for gender when radio button is figured out
-//
-//        startActivity(intent);
-//
-//    }
 
     /**
      * customizable toast
@@ -106,6 +109,31 @@ public class PostInvitation extends AppCompatActivity {
      */
     private void toastMessage(String message){
         Toast.makeText(this,message,Toast.LENGTH_SHORT).show();
+    }
+
+
+    public void addToDatabase(String key, String propName, String date_and_time, Integer price, String address, Integer num_bdrm, Integer num_bath) {
+        //handle the exception if the EditText fields are null
+        // TODO: remove userID from user, make sure username is unique
+        if (!propName.equals("") && !date_and_time.equals("") && !address.equals("") && !(price==null) && !(num_bdrm==null) && !(num_bath==null)){
+            Invitation newInvitation = new Invitation(userID, propName, key, date_and_time, price, address, num_bdrm, num_bath);
+            myRef.child(key).setValue(newInvitation);
+            toastMessage("Info has been saved!");
+            mPropName.setText("");
+            mAddress.setText("");
+            mPrice.setText("");
+            mNumBeds.setText("");
+            mNumBaths.setText("");
+            mDate.setText("");
+
+            // Send intent to Main Activity
+            Intent intent = new Intent(PostInvitation.this, MainActivity.class);
+            startActivity(intent);
+
+        }else {
+                toastMessage("Fill out all the fields loser");
+
+        }
     }
 
 }

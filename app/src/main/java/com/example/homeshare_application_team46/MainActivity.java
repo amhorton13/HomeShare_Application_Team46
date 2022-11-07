@@ -73,16 +73,16 @@ public class MainActivity extends AppCompatActivity implements MyCallback {
         //Test Data
         User testUser = new User("jj@usc.edu", "jjVal", "peepeepoopoo", 43, "milfs");
         User testUser2 = new User("jj@usc.edu", "jjVal", "peepeepoopoo", 43, "milfs");
-        invitations.add(new Invitation(testUser, "moon", 1, "jan", 1500, "USC", 2, 2));
-        invitations.add(new Invitation(testUser, "lorenzo", 2,  "october", 2000, "Orchard", 1, 1));
-        invitations.add(new Invitation(testUser2, "mo", 3, "december", 2300, "The Moon", 4, 2));
+        invitations.add(new Invitation("testUser", "moon", "1", "jan", 1500, "USC", 2, 2));
+        invitations.add(new Invitation("testUser", "lorenzo", "2",  "october", 2000, "Orchard", 1, 1));
+        invitations.add(new Invitation("testUser2", "mo", "3", "december", 2300, "The Moon", 4, 2));
 
         //display invitations
         LinearLayout layout = (LinearLayout) findViewById(R.id.scrollLayout);
         LayoutInflater li = LayoutInflater.from(this);
         for(Invitation inv : invitations){
             ConstraintLayout item = (ConstraintLayout) li.inflate(R.layout.feed_item, layout, false);
-            item.setTag(inv.getPoster().getUsername());
+
 
             //set price
             TextView price = (TextView) item.getChildAt(0);
@@ -97,9 +97,9 @@ public class MainActivity extends AppCompatActivity implements MyCallback {
             //set details
             TextView details = (TextView) item.getChildAt(3);
             String location = inv.getAddress();
-            String poster = inv.getPoster().getUsername();
-            String dText = location + " by " + poster;
-            details.setText(dText);
+//            String poster = inv.getPoster().getUsername();
+//            String dText = location + " by " + poster;
+//            details.setText(dText);
             item.setOnClickListener(this::openInvitation);
             layout.addView(item);
         }
@@ -146,6 +146,10 @@ public class MainActivity extends AppCompatActivity implements MyCallback {
     public void openInvitation(View view){
         Intent intent = new Intent(this, InvitationDetails.class);
         intent.putExtra("inviteID", (String) view.getTag());
+        startActivity(intent);
+    }
+    public void openPostInvitation(View view){
+        Intent intent = new Intent(this, PostInvitation.class);
         startActivity(intent);
     }
 

@@ -40,9 +40,9 @@ public class ProfilePage extends AppCompatActivity {
         User testUser = new User("JamesHarris@usc.edu", "Jameswah", "i like cs", 12, "idk");
         User testUser2 = new User("jj@usc.edu", "jjVal", "peepeepoopoo", 43, "milfs");
 
-        testUser.addInvitation(new Invitation(testUser, "minn", 1, "popo", 1500, "USC", 2, 2));
-        testUser.addInvitation(new Invitation(testUser, "jkdnfjks", 2, "date", 2000, "Orchard", 1, 1));
-        testUser.addResponse(new Invitation(testUser2, "jks",3, "date", 2300, "The Moon", 4, 2));
+        testUser.addInvitation(new Invitation("testUser", "minn", "1", "popo", 1500, "USC", 2, 2));
+        testUser.addInvitation(new Invitation("testUser", "jkdnfjks", "2", "date", 2000, "Orchard", 1, 1));
+        testUser.addResponse(new Invitation("testUser2", "jks","3", "date", 2300, "The Moon", 4, 2));
 
         LinearLayout layout = (LinearLayout) findViewById(R.id.scrollLayout);
         LayoutInflater li = LayoutInflater.from(this);
@@ -63,7 +63,7 @@ public class ProfilePage extends AppCompatActivity {
                 //set details
                 TextView details = (TextView) item.getChildAt(3);
                 String location = inv.getAddress();
-                String poster = inv.getPoster().getUsername();
+                String poster = "inv.getPoster().getUsername()";
                 String dText = location + " by " + poster;
                 details.setText(dText);
                 layout.addView(item);
