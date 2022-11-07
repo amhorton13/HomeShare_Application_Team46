@@ -64,6 +64,8 @@ public class MainActivity extends AppCompatActivity implements MyCallback {
             String maxBath = intent.getStringExtra("maxbaths");
             String minRent = intent.getStringExtra("minrent");
             String maxRent= intent.getStringExtra("maxrent");
+            String minAge = intent.getStringExtra("minage");
+            String maxAge= intent.getStringExtra("maxage");
             //TODO: get invitations from DB to display using those filters ^^, set as invitations array from above
         }
         else{

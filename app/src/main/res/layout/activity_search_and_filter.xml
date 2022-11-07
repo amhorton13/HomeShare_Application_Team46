@@ -123,6 +123,39 @@
         />
 
     <TextView
+        android:id="@+id/AgeRangeTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_below="@+id/BathRangeTitle"
+        android:gravity="bottom"
+        android:text="Age Range:"
+        android:layout_marginStart="45dp"
+        android:textSize="18sp"
+        />
+
+    <EditText
+        android:id="@+id/ageMin"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/BathRangeTitle"
+        android:layout_toRightOf="@+id/AgeRangeTitle"
+        android:ems="10"
+        android:hint="@string/min"
+        android:inputType="number"
+        />
+
+    <EditText
+        android:id="@+id/ageMax"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/ageMin"
+        android:layout_below="@+id/BathRangeTitle"
+        android:ems="10"
+        android:hint="@string/max"
+        android:inputType="number"
+        />
+
+    <TextView
         android:id="@+id/genderFilterTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -130,7 +163,7 @@
         android:layout_marginStart="45dp"
         android:layout_marginTop="10dp"
         android:textSize="18sp"
-        android:layout_below="@+id/BathRangeTitle"
+        android:layout_below="@+id/AgeRangeTitle"
         />
 
     <RadioGroup
@@ -177,13 +210,7 @@
 
     </RadioGroup>
 
-    <Spinner
-        android:id="@+id/spinner_schoolyear_filter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="338dp"
-        android:spinnerMode="dropdown"
-        />
+
 
     <Button
         android:id="@+id/ApplyFiltersButton"

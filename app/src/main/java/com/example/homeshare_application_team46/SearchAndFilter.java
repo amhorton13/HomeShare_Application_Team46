@@ -21,16 +21,13 @@ public class SearchAndFilter extends AppCompatActivity {
     String max_bdrm;
     String min_bath;
     String max_bath;
+    String min_age;
+    String max_age;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_and_filter);
-
-        Spinner spinnerSchoolYearFilter=findViewById(R.id.spinner_schoolyear_filter);
-        ArrayAdapter<CharSequence>adapter=ArrayAdapter.createFromResource(this, R.array.schoolYears, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
-        spinnerSchoolYearFilter.setAdapter(adapter);
 
         EditText minrentEditText = (EditText) findViewById(R.id.priceMin);
         min_rent = minrentEditText.getText().toString();
@@ -49,23 +46,31 @@ public class SearchAndFilter extends AppCompatActivity {
 
         EditText maxbathEditText = (EditText) findViewById(R.id.bathMax);
         max_bath = maxbathEditText.getText().toString();
+
+        EditText minageEditText = (EditText) findViewById(R.id.ageMin);
+        min_age = minageEditText.getText().toString();
+
+        EditText maxageEditText = (EditText) findViewById(R.id.ageMax);
+        max_age = maxageEditText.getText().toString();
     }
 
     public void applyFiltersHandler(View view){
-        /* TODO: update the filters attached to the main activity feed so that
-            after intent returns to main page the feed is filtered */
+        /* TODO: update the extras (filters) attached to the main activity feed so that
+            after intent returns to main page the extras can be used to filter invites */
 
-//        Intent intent = new Intent(this, MainActivity.class);
-//
-//        intent.putExtra("action", "filtering");
-//
-//        intent.putExtra("maxbedrooms", max_bdrm);
-//        intent.putExtra("minbedrooms", min_bdrm);
-//        intent.putExtra("minbaths", min_bath);
-//        intent.putExtra("maxbaths", max_bath);
-//        intent.putExtra("minrent", min_rent);
-//        intent.putExtra("maxrent", max_rent);
-//
-//        startActivity(intent);
+        Intent intent = new Intent(this, MainActivity.class);
+
+        intent.putExtra("filtering", true);
+
+        intent.putExtra("maxbedrooms", max_bdrm);
+        intent.putExtra("minbedrooms", min_bdrm);
+        intent.putExtra("minbaths", min_bath);
+        intent.putExtra("maxbaths", max_bath);
+        intent.putExtra("minrent", min_rent);
+        intent.putExtra("maxrent", max_rent);
+        intent.putExtra("minage", min_age);
+        intent.putExtra("maxage", max_age);
+
+        startActivity(intent);
     }
 }
