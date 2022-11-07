@@ -112,6 +112,7 @@ public class MainActivity extends AppCompatActivity implements MyCallback {
         FirebaseUser user = mAuth.getCurrentUser();
         System.out.println("Main Activity user: " + user.getUid());
         userID = user.getUid();
+        System.out.println("query:");
 
         // Callback once async call is back
         readData(new MyCallback() {
