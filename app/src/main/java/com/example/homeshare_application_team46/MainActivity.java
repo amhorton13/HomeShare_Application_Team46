@@ -122,7 +122,6 @@ public class MainActivity extends AppCompatActivity implements MyCallback {
             public void onCallback(String value) {
 
             }
-
             @Override
             public void onCallback(String email, String username, String password, int age, String biography) {
 
