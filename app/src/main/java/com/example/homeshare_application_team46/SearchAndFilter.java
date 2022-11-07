@@ -7,8 +7,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.Toast;
 
 import android.os.Bundle;
@@ -23,6 +26,9 @@ public class SearchAndFilter extends AppCompatActivity {
     String max_bath;
     String min_age;
     String max_age;
+//    RadioGroup rg;
+//    RadioButton rb;
+//    private Button btnDisplay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +58,33 @@ public class SearchAndFilter extends AppCompatActivity {
 
         EditText maxageEditText = (EditText) findViewById(R.id.ageMax);
         max_age = maxageEditText.getText().toString();
-    }
+
+//        addListenerOnButton();
+        }
+
+//    public void addListenerOnButton() {
+//
+//        rg = (RadioGroup) findViewById(R.id.genderRadioGroup);
+//        btnDisplay = (Button) findViewById(R.id.btnDisplay);
+//
+//        btnDisplay.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                // get selected radio button from radioGroup
+//                int selectedId = rg.getCheckedRadioButtonId();
+//
+//                // find the radiobutton by returned id
+//                rb = (RadioButton) findViewById(selectedId);
+//
+//                Toast.makeText(MyAndroidAppActivity.this,
+//                        radioButton.getText(), Toast.LENGTH_SHORT).show();
+//
+//            }
+//
+//        });
+//    }
+
 
     public void applyFiltersHandler(View view){
         /* TODO: update the extras (filters) attached to the main activity feed so that
