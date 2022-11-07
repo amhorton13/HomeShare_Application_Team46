@@ -1,6 +1,7 @@
 package com.example.homeshare_application_team46;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -30,6 +31,11 @@ public class ProfilePage extends AppCompatActivity {
 
         //TODO: Query DB using username from intent, fill in information to be used by profile page
 
+        //TODO: Get User from intent
+        String username = "JamesHarris";
+        TextView nameView = (TextView) findViewById(R.id.username);
+        nameView.setText(username);
+
         //Test Data
         User testUser = new User("JamesHarris@usc.edu", "Jameswah", "i like cs", 12, "idk");
         User testUser2 = new User("jj@usc.edu", "jjVal", "peepeepoopoo", 43, "milfs");
@@ -43,21 +49,48 @@ public class ProfilePage extends AppCompatActivity {
         Intent intent = getIntent();
         if(intent.getExtras() != null && intent.getStringExtra("profileSetting").equals("responses")) {
             for(Invitation inv : testUser.getResponses()) {
-                TextView tv = (TextView) li.inflate(R.layout.feed_item, layout, false);
-                String text = inv.getNum_bdrm() + " Bed " + inv.getNum_bath() + " Bath near " + inv.getLocation() + " for $" + inv.getPrice();
-                text += " by " + inv.getPoster().getUsername();
-                tv.setText(text);
-                layout.addView(tv);
+                ConstraintLayout item = (ConstraintLayout) li.inflate(R.layout.feed_item, layout, false);
+                //set price
+                TextView price = (TextView) item.getChildAt(0);
+                String pText = "$" + Integer.toString(inv.getPrice());
+                price.setText(pText);
+                //set bedBath
+                TextView bedBath = (TextView) item.getChildAt(2);
+                int numBed = inv.getNum_bdrm();
+                int numBath = inv.getNum_bath();
+                String bbText = Integer.toString(numBed) + " Bed " + Integer.toString(numBath) + " Bath";
+                bedBath.setText(bbText);
+                //set details
+                TextView details = (TextView) item.getChildAt(3);
+                String location = inv.getLocation();
+                String poster = inv.getPoster().getUsername();
+                String dText = location + " by " + poster;
+                details.setText(dText);
+                layout.addView(item);
             }
             Button resButton = (Button) findViewById(R.id.responses);
             resButton.setBackgroundColor(Color.GRAY);
         }
         else{
             for(Invitation inv : testUser.getInvitations()) {
-                TextView tv = (TextView) li.inflate(R.layout.feed_item, layout, false);
-                String text = inv.getNum_bdrm() + " Bed " + inv.getNum_bath() + " Bath near " + inv.getLocation() + " for $" + inv.getPrice();
-                tv.setText(text);
-                layout.addView(tv);
+                ConstraintLayout item = (ConstraintLayout) li.inflate(R.layout.feed_item, layout, false);
+                //set price
+                TextView price = (TextView) item.getChildAt(0);
+                String pText = "$" + Integer.toString(inv.getPrice());
+                price.setText(pText);
+                //set bedBath
+                TextView bedBath = (TextView) item.getChildAt(2);
+                int numBed = inv.getNum_bdrm();
+                int numBath = inv.getNum_bath();
+                String bbText = Integer.toString(numBed) + " Bed " + Integer.toString(numBath) + " Bath";
+                bedBath.setText(bbText);
+
+                //set details
+                TextView details = (TextView) item.getChildAt(3);
+                String location = inv.getLocation();
+                String dText = location;
+                details.setText(dText);
+                layout.addView(item);
             }
             Button invButton = (Button) findViewById(R.id.activeInv);
             invButton.setBackgroundColor(Color.GRAY);
