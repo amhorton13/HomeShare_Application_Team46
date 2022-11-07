@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height= "match_parent"
+    android:layout_height="match_parent"
     tools:context=".InvitationDetails">
 
     <TextView
@@ -14,107 +14,89 @@
         android:text="@string/invitation_details_title"
         android:textColor="#D500F9"
         android:textSize="28sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.436"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_centerHorizontal="true"
+         />
 
     <TextView
         android:id="@+id/property_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
         android:text="@string/invitation_details_property_name"
-        android:textColor="#D500F9"
-        android:textSize="28sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.436"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginStart="10dp"
+        android:layout_below="@+id/invitation_title"
+        android:textSize="22sp"
+        android:layout_marginTop="10dp"
+         />
 
     <TextView
         android:id="@+id/gender"
-        android:layout_width="83dp"
+        android:layout_width="400dp"
         android:layout_height="32dp"
-        android:layout_marginTop="172dp"
-        android:text="@string/gender_inv_details"
+        android:layout_below="@+id/property_name"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:text="Gender: "
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.118"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+         />
 
     <TextView
-        android:id="@+id/schoolYear"
-        android:layout_width="83dp"
+        android:id="@+id/AgeDetail"
+        android:layout_width="400dp"
         android:layout_height="32dp"
-        android:layout_marginTop="172dp"
-        android:text="@string/schoolyear_inv_details"
+        android:layout_below="@+id/gender"
+        android:layout_marginStart="10dp"
+        android:text="Age: "
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.118"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+         />
 
     <TextView
         android:id="@+id/num_bdrms_inv_details"
-        android:layout_width="83dp"
+        android:layout_width="400dp"
         android:layout_height="32dp"
-        android:layout_marginTop="172dp"
-        android:text= "0"
+        android:layout_below="@+id/AgeDetail"
+        android:layout_marginStart="10dp"
+        android:text= "Number of Bedrooms: "
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.118"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+         />
 
     <TextView
         android:id="@+id/num_baths_inv_details"
-        android:layout_width="83dp"
+        android:layout_width="400dp"
         android:layout_height="32dp"
-        android:layout_marginTop="172dp"
-        android:text= "0"
+        android:layout_below="@+id/num_bdrms_inv_details"
+        android:layout_marginStart="10dp"
+        android:text= "Number of Baths: "
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.118"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+         />
 
     <TextView
         android:id="@+id/rent_price_inv_details"
-        android:layout_width="83dp"
+        android:layout_width="400dp"
         android:layout_height="32dp"
-        android:layout_marginTop="172dp"
-        android:text= "$1500"
+        android:layout_below="@+id/num_baths_inv_details"
+        android:layout_marginStart="10dp"
+        android:text= "Rent per Month: $1500"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.118"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+         />
 
     <TextView
         android:id="@+id/address_inv_details"
-        android:layout_width="83dp"
+        android:layout_width="400dp"
         android:layout_height="32dp"
-        android:layout_marginTop="172dp"
-        android:text= "@string/address_inv_details"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.118"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_below="@+id/rent_price_inv_details"
+        android:layout_marginStart="10dp"
+        android:text="Address: "
+        android:textSize="18sp" />
 
     <Button
         android:id="@+id/repsondButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="684dp"
+        android:layout_marginTop="500dp"
         android:backgroundTint="#D500F9"
         android:onClick="responseHandler"
         android:text="Respond to Invitation"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.425"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_centerHorizontal="true"
+         />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>
