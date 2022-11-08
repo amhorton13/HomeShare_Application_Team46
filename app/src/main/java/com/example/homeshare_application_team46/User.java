@@ -25,6 +25,12 @@ public class User {
     private ArrayList<Invitation> user_invitations;
     private ArrayList<Invitation> invitations_responded_to;
 
+    public User(){
+        user_interests = new ArrayList<>();
+        user_invitations = new ArrayList<>();
+        invitations_responded_to = new ArrayList<>();
+    }
+
     public User(String email, String username, String password, int age, String biography){
 
         this.email = email;
