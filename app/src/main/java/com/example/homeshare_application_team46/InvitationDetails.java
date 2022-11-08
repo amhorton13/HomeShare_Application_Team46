@@ -51,7 +51,7 @@ public class InvitationDetails extends AppCompatActivity {
         Invitation curr_inv = Invitation.queryInvitation(invID);
         String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
         Response response_to_add = new Response(userID, false, false);
-        curr_inv.addResponse(response_to_add);
+        curr_inv.addUserResponse(response_to_add);
 
         //TODO: update the same invitation in the databases now that the response array has been updated
 

@@ -1,0 +1,6 @@
+HomeShare
+
+1. Import the project to Android Studio.
+2. Create an Android Virtual Device:
+    -Select "Pixel 2" as the device and "Nougat API 24 Android 7.0 x86" as the sytem image.
+3. Run the app in the emulator.
