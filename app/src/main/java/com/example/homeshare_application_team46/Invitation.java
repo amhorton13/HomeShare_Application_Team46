@@ -45,6 +45,10 @@ public class Invitation {
     public int getNum_bdrm(){return num_bdrm;}
     public int getNum_bath(){return num_bath;}
 
+    public void addResponse(Response res){
+        responses.add(res);
+    }
+
     public void post(){
 
     }

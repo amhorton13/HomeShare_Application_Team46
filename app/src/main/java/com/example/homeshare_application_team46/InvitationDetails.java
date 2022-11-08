@@ -6,7 +6,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 public class InvitationDetails extends AppCompatActivity {
+
+    String invID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -14,7 +19,7 @@ public class InvitationDetails extends AppCompatActivity {
         setContentView(R.layout.activity_invitation_details);
         /* TODO: set the correct values for the invitation details frontend */
         Intent intent = getIntent();
-        String invID = intent.getStringExtra("inviteID");
+        invID = intent.getStringExtra("inviteID");
         /* TODO: Query DB using invID to get the other information and set the value  */
         Invitation curr_inv = Invitation.queryInvitation(invID);
 
@@ -41,8 +46,14 @@ public class InvitationDetails extends AppCompatActivity {
 
     public void responseHandler(){
         //TODO: Add the current user to the responses of the current invite
-
         //After responding to an invite, app goes to profile page to see all invites user has responded to.
+        Invitation curr_inv = Invitation.queryInvitation(invID);
+        String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        Response response_to_add = new Response(userID, false, false);
+        curr_inv.addResponse(response_to_add);
+
+        //TODO: update the same invitation in the databases now that the response array has been updated
+
         Intent intent = new Intent(this, ProfilePage.class);
         startActivity(intent);
     }
