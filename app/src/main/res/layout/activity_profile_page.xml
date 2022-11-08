@@ -23,7 +23,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:text="JamesHarris"
         android:textSize="30sp"
         android:textColor="@color/black"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -34,7 +33,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:text="I like long walks on the beach and watching the kardashians. I go to sleep early and wake up late. I don't go to class. Must be willing to live with my three adopted cats, one of which is missing three legs, one eye and shits in the kitchen sink.  "
         android:textSize="15sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/username" />

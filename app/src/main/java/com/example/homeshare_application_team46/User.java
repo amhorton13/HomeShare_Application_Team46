@@ -109,8 +109,26 @@ public class User {
                 }
                 else {
                     //Log.d("firebase", String.valueOf(task.getResult().getValue()));
-                    for(DataSnapshot snap : task.getResult().getChildren()){
-                        System.out.println("user queryUser function" + snap.getValue());
+                    String email;
+                    String username;
+                    String password;
+                    int age;
+                    String biography;
+                    try {
+                        for (DataSnapshot snap : task.getResult().getChildren()) {
+                            if (snap.getKey().equals("age")) age = (int) snap.getValue();
+                            else if (snap.getKey().equals("biography"))
+                                biography = (String) snap.getValue();
+                            else if (snap.getKey().equals("email"))
+                                email = (String) snap.getValue();
+                            else if (snap.getKey().equals("password"))
+                                password = (String) snap.getValue();
+                            else if (snap.getKey().equals("username"))
+                                username = (String) snap.getValue();
+                        }
+
+                    }catch(NullPointerException e){
+                        e.printStackTrace();
                     }
                 }
             }
