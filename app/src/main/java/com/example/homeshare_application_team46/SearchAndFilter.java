@@ -24,8 +24,6 @@ public class SearchAndFilter extends AppCompatActivity {
     String max_bdrm;
     String min_bath;
     String max_bath;
-    String min_age;
-    String max_age;
 //    RadioGroup rg;
 //    RadioButton rb;
 //    private Button btnDisplay;
@@ -53,11 +51,6 @@ public class SearchAndFilter extends AppCompatActivity {
         EditText maxbathEditText = (EditText) findViewById(R.id.bathMax);
         max_bath = maxbathEditText.getText().toString();
 
-        EditText minageEditText = (EditText) findViewById(R.id.ageMin);
-        min_age = minageEditText.getText().toString();
-
-        EditText maxageEditText = (EditText) findViewById(R.id.ageMax);
-        max_age = maxageEditText.getText().toString();
 
 //        addListenerOnButton();
         }
@@ -92,7 +85,7 @@ public class SearchAndFilter extends AppCompatActivity {
 
         Intent intent = new Intent(this, MainActivity.class);
 
-        intent.putExtra("filtering", true);
+        intent.putExtra("filtering", "yes");
 
         intent.putExtra("maxbedrooms", max_bdrm);
         intent.putExtra("minbedrooms", min_bdrm);
@@ -100,8 +93,6 @@ public class SearchAndFilter extends AppCompatActivity {
         intent.putExtra("maxbaths", max_bath);
         intent.putExtra("minrent", min_rent);
         intent.putExtra("maxrent", max_rent);
-        intent.putExtra("minage", min_age);
-        intent.putExtra("maxage", max_age);
 
         startActivity(intent);
     }

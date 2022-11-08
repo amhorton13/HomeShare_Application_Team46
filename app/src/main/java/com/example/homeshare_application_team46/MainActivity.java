@@ -18,6 +18,8 @@ import java.util.*;
 import android.os.Handler;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
@@ -51,61 +53,91 @@ public class MainActivity extends AppCompatActivity implements MyCallback {
 
         // Write a message to the database
         database = FirebaseDatabase.getInstance();
+        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();;
+
 
 
         ArrayList<Invitation> invitations = new ArrayList<>();
         Intent intent = getIntent();
 
-
-        if(intent.getExtras() != null && intent.getBooleanExtra("filtering", true)){
-            String minBdrm = intent.getStringExtra("minbedrooms");
-            String maxBdrm = intent.getStringExtra("maxbedrooms");
-            String minBath = intent.getStringExtra("minbaths");
-            String maxBath = intent.getStringExtra("maxbaths");
-            String minRent = intent.getStringExtra("minrent");
-            String maxRent= intent.getStringExtra("maxrent");
-            String minAge = intent.getStringExtra("minage");
-            String maxAge= intent.getStringExtra("maxage");
-            //TODO: get invitations from DB to display using those filters ^^, set as invitations array from above
+        //declare filters
+        int minBdrm = Integer.MIN_VALUE;
+        int maxBdrm = Integer.MAX_VALUE;
+        int minBath = Integer.MIN_VALUE;
+        int maxBath = Integer.MAX_VALUE;
+        int minRent = Integer.MIN_VALUE;
+        int maxRent= Integer.MAX_VALUE;
+        if(intent.getStringExtra("filtering") != null){
+            minBdrm = Integer.parseInt(intent.getStringExtra("minbedrooms"));
+            maxBdrm = Integer.parseInt(intent.getStringExtra("maxbedrooms"));
+            minBath = Integer.parseInt(intent.getStringExtra("minbaths"));
+            maxBath = Integer.parseInt(intent.getStringExtra("maxbaths"));
+            minRent = Integer.parseInt(intent.getStringExtra("minrent"));
+            maxRent= Integer.parseInt(intent.getStringExtra("maxrent"));
         }
-        else{
-            //TODO: get all invitations from DB to display, set as invitations array from above
-        }
 
-        //Test Data
-        User testUser = new User("jj@usc.edu", "jjVal", "peepeepoopoo", 43, "milfs");
-        User testUser2 = new User("jj@usc.edu", "jjVal", "peepeepoopoo", 43, "milfs");
-        invitations.add(new Invitation("testUser", "moon", "1", "jan", 1500, "USC", 2, 2));
-        invitations.add(new Invitation("testUser", "lorenzo", "2",  "october", 2000, "Orchard", 1, 1));
-        invitations.add(new Invitation("testUser2", "mo", "3", "december", 2300, "The Moon", 4, 2));
 
         //display invitations
         LinearLayout layout = (LinearLayout) findViewById(R.id.scrollLayout);
         LayoutInflater li = LayoutInflater.from(this);
-        for(Invitation inv : invitations){
-            ConstraintLayout item = (ConstraintLayout) li.inflate(R.layout.feed_item, layout, false);
+
+        int finalMinBath = minBath;
+        int finalMaxBath = maxBath;
+        int finalMinBdrm = minBdrm;
+        int finalMaxBdrm = maxBdrm;
+        int finalMinRent = minRent;
+        int finalMaxRent = maxRent;
+        mDatabase.child("Invitations").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                ArrayList<Invitation> toDisplay = new ArrayList<>();
+                if (!task.isSuccessful()) {
+                    Log.e("firebase", "Error getting data", task.getException());
+                } else {
+                    for (DataSnapshot t : task.getResult().getChildren()) {
+                        String poster = (String) t.child("poster").getValue();
+                        String propName = (String) t.child("propName").getValue();
+                        String date = (String) t.child("date_and_time").getValue();
+                        String invID = (String) t.child("invitation_id").getValue();
+                        String address = (String) t.child("address").getValue();
+                        int numBath = ((Long) t.child("num_bath").getValue()).intValue();
+                        int numBed = ((Long) t.child("num_bdrm").getValue()).intValue();
+                        int price = ((Long) t.child("price").getValue()).intValue();
+
+                        boolean goodBed = numBed >= finalMinBdrm && numBed <= finalMaxBdrm;
+                        boolean goodBath = numBath >= finalMinBath && numBath <= finalMaxBath;
+                        boolean goodPrice = price >= finalMinRent && price <= finalMaxRent;
+                        if (goodBed && goodBath && goodPrice) {
+                            System.out.println("Added:");
+                            toDisplay.add(new Invitation(poster, propName, invID, date, price, address, numBed, numBath));
+                        }
+                    }
 
 
-            //set price
-            TextView price = (TextView) item.getChildAt(0);
-            String pText = "$" + Integer.toString(inv.getPrice());
-            price.setText(pText);
-            //set bedBath
-            TextView bedBath = (TextView) item.getChildAt(2);
-            int numBed = inv.getNum_bdrm();
-            int numBath = inv.getNum_bath();
-            String bbText = Integer.toString(numBed) + " Bed " + Integer.toString(numBath) + " Bath";
-            bedBath.setText(bbText);
-            //set details
-            TextView details = (TextView) item.getChildAt(3);
-            String location = inv.getAddress();
-//            String poster = inv.getPoster().getUsername();
-//            String dText = location + " by " + poster;
-//            details.setText(dText);
-            item.setOnClickListener(this::openInvitation);
-            item.setTag(inv.getInvitation_id());
-            layout.addView(item);
-        }
+                    for (Invitation inv : toDisplay) {
+                        ConstraintLayout item = (ConstraintLayout) li.inflate(R.layout.feed_item, layout, false);
+                        //set price
+                        TextView price = (TextView) item.getChildAt(0);
+                        String pText = "$" + Integer.toString(inv.getPrice());
+                        price.setText(pText);
+                        //set bedBath
+                        TextView bedBath = (TextView) item.getChildAt(2);
+                        int numBed = inv.getNum_bdrm();
+                        int numBath = inv.getNum_bath();
+                        String bbText = Integer.toString(numBed) + " Bed " + Integer.toString(numBath) + " Bath";
+                        bedBath.setText(bbText);
+                        //set details
+                        TextView details = (TextView) item.getChildAt(3);
+                        String address = inv.getAddress();
+                        String propName = inv.getPropName();
+                        String dText = propName + " at " + address;
+                        details.setText(dText);
+                        item.setTag(inv.getInvitation_id());
+                        layout.addView(item);
+                    }
+                }
+            }
+        });
 
 
         // Create the user that's logged in
