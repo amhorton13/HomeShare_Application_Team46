@@ -101,6 +101,12 @@ public class User {
 
     public static User queryUser(String userID){
         DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();;
+        final Object[] email = {null};
+        final Object[] password = new Object[1];
+        final Object[] age = new Object[1];
+        final Object[] bio = new Object[1];
+        final Object[] username = new Object[1];
+        final User[] loggedInUser = new User[1];
         mDatabase.child("Users").child(userID).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
@@ -108,15 +114,20 @@ public class User {
                     Log.e("firebase", "Error getting data", task.getException());
                 }
                 else {
-                    //Log.d("firebase", String.valueOf(task.getResult().getValue()));
-                    for(DataSnapshot snap : task.getResult().getChildren()){
-                        System.out.println("user queryUser function" + snap.getValue());
-                    }
+                        email[0] = task.getResult().child("email").getValue();
+                        password[0] = task.getResult().child("password").getValue();
+                        age[0] = task.getResult().child("age").getValue();
+                        bio[0] = task.getResult().child("biography").getValue();
+                        username[0] = task.getResult().child("username").getValue();
+                        returnUser(email[0].toString(), username[0].toString(), password[0].toString(), (Math.toIntExact((Long) age[0])), bio[0].toString());
                 }
             }
         });
 
         return null;
+    }
+    public static User returnUser(String email, String username, String password, int age, String biography) {
+        return new User(email,username, password, age, biography);
     }
 }
 
