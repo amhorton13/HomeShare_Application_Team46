@@ -129,7 +129,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="500dp"
         android:backgroundTint="#D500F9"
-        android:onClick="responseHandler"
         android:text="Respond to Invitation"
         android:layout_centerHorizontal="true"
          />
