@@ -28,32 +28,33 @@
         android:layout_marginTop="10dp"
          />
 
-    <TextView
-        android:id="@+id/gender"
-        android:layout_width="400dp"
-        android:layout_height="32dp"
-        android:layout_below="@+id/property_name"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:text="Gender: "
-        android:textSize="18sp"
-         />
+<!--    <TextView-->
+<!--        android:id="@+id/gender"-->
+<!--        android:layout_width="400dp"-->
+<!--        android:layout_height="32dp"-->
+<!--        android:layout_below="@+id/property_name"-->
+<!--        android:layout_marginStart="10dp"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:text="Gender: "-->
+<!--        android:textSize="18sp"-->
+<!--         />-->
 
-    <TextView
-        android:id="@+id/AgeDetail"
-        android:layout_width="400dp"
-        android:layout_height="32dp"
-        android:layout_below="@+id/gender"
-        android:layout_marginStart="10dp"
-        android:text="Age: "
-        android:textSize="18sp"
-         />
+<!--    <TextView-->
+<!--        android:id="@+id/AgeDetail"-->
+<!--        android:layout_width="400dp"-->
+<!--        android:layout_height="32dp"-->
+<!--        android:layout_below="@+id/gender"-->
+<!--        android:layout_marginStart="10dp"-->
+<!--        android:text="Age: "-->
+<!--        android:textSize="18sp"-->
+<!--         />-->
 
     <TextView
         android:id="@+id/num_bdrms_inv_details"
         android:layout_width="400dp"
         android:layout_height="32dp"
-        android:layout_below="@+id/AgeDetail"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/property_name"
         android:layout_marginStart="10dp"
         android:text= "Number of Bedrooms: "
         android:textSize="18sp"

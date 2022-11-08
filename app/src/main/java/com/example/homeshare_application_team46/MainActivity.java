@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements MyCallback {
         Intent intent = getIntent();
 
 
-        if(intent.getExtras() != null && intent.getBooleanExtra("filtering", false)){
+        if(intent.getExtras() != null && intent.getBooleanExtra("filtering", true)){
             String minBdrm = intent.getStringExtra("minbedrooms");
             String maxBdrm = intent.getStringExtra("maxbedrooms");
             String minBath = intent.getStringExtra("minbaths");
@@ -112,8 +112,6 @@ public class MainActivity extends AppCompatActivity implements MyCallback {
         FirebaseUser user = mAuth.getCurrentUser();
         System.out.println("Main Activity user: " + user.getUid());
         userID = user.getUid();
-        System.out.println("query:");
-        User.queryUser(userID);
 
 
         // Callback once async call is back
@@ -146,7 +144,6 @@ public class MainActivity extends AppCompatActivity implements MyCallback {
         User testUser3 = new User("jj@usc.edu", "jjVal", "peepeepoopoo", 43, "milfs");
     }
 
-    //TODO: figure out getting inviteID from view and adding to intent
     public void openInvitation(View view){
         Intent intent = new Intent(this, InvitationDetails.class);
         intent.putExtra("inviteID", (String) view.getTag());

@@ -13,6 +13,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.Date;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
@@ -23,18 +26,24 @@ public class ProfilePage extends AppCompatActivity {
 
     private FirebaseDatabase database;
     private DatabaseReference myRef;
+    private User userProfile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_page);
 
-        //TODO: Query DB using username from intent, fill in information to be used by profile page
-
         //TODO: Get User from intent
-        String username = "JamesHarris";
-        TextView nameView = (TextView) findViewById(R.id.username);
-        nameView.setText(username);
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = mAuth.getCurrentUser();
+        String userID = user.getUid();
+        userProfile = User.queryUser(userID);
+        if(userProfile == null) System.out.println("NULLLLLLLLLLLLL");
+        else {
+            System.out.println("USERNAME: " + userProfile.getUsername());
+            TextView nameView = (TextView) findViewById(R.id.username);
+            nameView.setText(userProfile.getUsername());
+        }
 
         //Test Data
         User testUser = new User("JamesHarris@usc.edu", "Jameswah", "i like cs", 12, "idk");
@@ -101,6 +110,16 @@ public class ProfilePage extends AppCompatActivity {
     public void showInvites(View view){
         Intent intent = new Intent(this, ProfilePage.class);
         intent.putExtra("profileSetting", "invites");
+        startActivity(intent);
+    }
+
+    public void editProfile(View view){
+        Intent intent = new Intent(this, EditProfile.class);
+        intent.putExtra("username", userProfile.getUsername());
+        intent.putExtra("age", userProfile.getAge());
+        intent.putExtra("password", userProfile.getPassword());
+        intent.putExtra("bio", userProfile.getBiography());
+        intent.putExtra("email", userProfile.getEmail());
         startActivity(intent);
     }
 
