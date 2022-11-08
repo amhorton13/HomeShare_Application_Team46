@@ -32,26 +32,6 @@ public class SearchAndFilter extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_and_filter);
-
-        EditText minrentEditText = (EditText) findViewById(R.id.priceMin);
-        min_rent = minrentEditText.getText().toString();
-
-        EditText maxrentEditText = (EditText) findViewById(R.id.priceMax);
-        max_rent = maxrentEditText.getText().toString();
-
-        EditText minbdrmEditText = (EditText) findViewById(R.id.bdrmMin);
-        min_bdrm = minbdrmEditText.getText().toString();
-
-        EditText maxbdrmEditText = (EditText) findViewById(R.id.bdrmMax);
-        max_bdrm = maxbdrmEditText.getText().toString();
-
-        EditText minbathEditText = (EditText) findViewById(R.id.bathMin);
-        min_bath = minbathEditText.getText().toString();
-
-        EditText maxbathEditText = (EditText) findViewById(R.id.bathMax);
-        max_bath = maxbathEditText.getText().toString();
-
-
 //        addListenerOnButton();
         }
 
@@ -84,6 +64,25 @@ public class SearchAndFilter extends AppCompatActivity {
             after intent returns to main page the extras can be used to filter invites */
 
         Intent intent = new Intent(this, MainActivity.class);
+
+        EditText minrentEditText = (EditText) findViewById(R.id.priceMin);
+        min_rent = minrentEditText.getText().toString();
+        System.out.println("PriceMin: " + min_rent);
+
+        EditText maxrentEditText = (EditText) findViewById(R.id.priceMax);
+        max_rent = maxrentEditText.getText().toString();
+
+        EditText minbdrmEditText = (EditText) findViewById(R.id.bdrmMin);
+        min_bdrm = minbdrmEditText.getText().toString();
+
+        EditText maxbdrmEditText = (EditText) findViewById(R.id.bdrmMax);
+        max_bdrm = maxbdrmEditText.getText().toString();
+
+        EditText minbathEditText = (EditText) findViewById(R.id.bathMin);
+        min_bath = minbathEditText.getText().toString();
+
+        EditText maxbathEditText = (EditText) findViewById(R.id.bathMax);
+        max_bath = maxbathEditText.getText().toString();
 
         intent.putExtra("filtering", "yes");
 
