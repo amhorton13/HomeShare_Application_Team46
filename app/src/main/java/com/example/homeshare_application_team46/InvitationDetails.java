@@ -22,6 +22,9 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.Deque;
+import java.util.HashMap;
+
 public class InvitationDetails extends AppCompatActivity {
 
     String invID;
@@ -34,46 +37,35 @@ public class InvitationDetails extends AppCompatActivity {
         Intent intent = getIntent();
         invID = intent.getStringExtra("inviteID");
         /* TODO: Query DB using invID to get the other information and set the value  */
+        System.out.println("INV ID INSIDE OF INV DETAILS:  " + invID);
+        TextView propNameDetails = (TextView) findViewById(R.id.etName);
+        TextView addDetails = (TextView) findViewById(R.id.etAddress);
+        TextView rentpriceDetails = (TextView) findViewById(R.id.etPrice);
+        TextView numbdrmDetails = (TextView) findViewById(R.id.etNumBeds);
+        TextView numbathDetails = (TextView) findViewById(R.id.etNumBaths);
+        TextView dateDetails = (TextView) findViewById(R.id.etDate);
 
-        TextView propNameDetails = (TextView) findViewById(R.id.property_name);
-        TextView numbdrmDetails = (TextView) findViewById(R.id.num_bdrms_inv_details);
-        TextView numbathDetails = (TextView) findViewById(R.id.num_baths_inv_details);
-        TextView rentpriceDetails = (TextView) findViewById(R.id.rent_price_inv_details);
-        TextView addDetails = (TextView) findViewById(R.id.address_inv_details);
-        displayInvitedetails(invID, propNameDetails, numbdrmDetails, numbathDetails, rentpriceDetails, addDetails);
+        displayInvitedetails(invID, propNameDetails, numbdrmDetails, numbathDetails, rentpriceDetails, addDetails, dateDetails);
     }
 
     public void responseHandler(View view){
         String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        Response response_to_add = new Response(userID, false, false);
-        //addResponseToInvitation(invID, response_to_add);
-
+        // Firebase instance
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference().child("Invitations").child(invID);
+        // New map to add
+        HashMap<String, Object> result = new HashMap<>();
+        result.put(userID, false);
+        myRef.child("Responses").setValue(result);
+        // Call intent to profile
         Intent intent = new Intent(this, ProfilePage.class);
         startActivity(intent);
     }
 
-//    private void addResponseToInvitation(String invID, Response response_to_add) {
-//        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();;
-//        //Invitation temp = new Invitation();
-//        mDatabase.child("Invitations").child(invID).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-//            @Override
-//            public void onComplete(@NonNull Task<DataSnapshot> task) {
-//                if (!task.isSuccessful()) {
-//                    Log.e("firebase", "Error getting data", task.getException());
-//                }
-//                else {
-//                    propNameDetails.setText((String)task.getResult().child("prop_name").getValue());
-//                    propNameDetails.setText((String)task.getResult().child("price").getValue());
-//                    addDetails.setText((String)task.getResult().child("address").getValue());
-//                    numbdrmDetails.setText((String)task.getResult().child("num_bdrm").getValue());
-//                    numbathDetails.setText((String)task.getResult().child("num_bath").getValue());
-//                }
-//            }
-//        });
-//
-//    }
 
-    public void displayInvitedetails(String invID, TextView propNameDetails, TextView numbdrmDetails, TextView numbathDetails, TextView rentpriceDetails, TextView addDetails){
+
+
+    public void displayInvitedetails(String invID, TextView propNameDetails, TextView numbdrmDetails, TextView numbathDetails, TextView rentpriceDetails, TextView addDetails, TextView dateDetails){
         DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();;
         //Invitation temp = new Invitation();
         mDatabase.child("Invitations").child(invID).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
@@ -83,11 +75,12 @@ public class InvitationDetails extends AppCompatActivity {
                     Log.e("firebase", "Error getting data", task.getException());
                 }
                 else {
-                    propNameDetails.setText((String)task.getResult().child("prop_name").getValue());
+                    propNameDetails.setText((String)task.getResult().child("propName").getValue());
                     rentpriceDetails.setText(Integer.toString(Math.toIntExact((Long) task.getResult().child("price").getValue())));
                     addDetails.setText((String)task.getResult().child("address").getValue());
                     numbdrmDetails.setText(Integer.toString(Math.toIntExact((Long) task.getResult().child("num_bdrm").getValue())));
                     numbathDetails.setText(Integer.toString(Math.toIntExact((Long) task.getResult().child("num_bath").getValue())));
+                    dateDetails.setText((String)task.getResult().child("date_and_time").getValue());
                 }
             }
         });
