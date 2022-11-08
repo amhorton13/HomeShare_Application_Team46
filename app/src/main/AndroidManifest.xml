@@ -26,6 +26,9 @@
             android:name=".ProfilePage"
             android:exported="false" />
         <activity
+            android:name=".ShowingResponses"
+            android:exported="false" />
+        <activity
             android:name=".PostInvitation"
             android:exported="false" />
         <activity

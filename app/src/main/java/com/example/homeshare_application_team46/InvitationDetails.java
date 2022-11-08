@@ -29,7 +29,7 @@ import java.util.HashMap;
 public class InvitationDetails extends AppCompatActivity {
 
     String invID;
-    String userID;
+    String curr_userID;
     Boolean ownProfile = false;
 
     @Override
@@ -50,7 +50,7 @@ public class InvitationDetails extends AppCompatActivity {
         TextView numbathDetails = (TextView) findViewById(R.id.etNumBaths);
         TextView dateDetails = (TextView) findViewById(R.id.etDate);
         TextView btnSubmit = (TextView) findViewById(R.id.respondButton);
-        userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        curr_userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
         displayInvitedetails(invID, propNameDetails, numbdrmDetails, numbathDetails, rentpriceDetails, addDetails, dateDetails, btnSubmit);
     }
@@ -67,12 +67,19 @@ public class InvitationDetails extends AppCompatActivity {
                     Log.e("firebase", "Error getting data", task.getException());
                 }
                 else {
+                    /* the following lines are just setting all the text views to contain correct information */
                     propNameDetails.setText((String) task.getResult().child("propName").getValue());
                     rentpriceDetails.setText(Integer.toString(Math.toIntExact((Long) task.getResult().child("price").getValue())));
                     addDetails.setText((String) task.getResult().child("address").getValue());
                     numbdrmDetails.setText(Integer.toString(Math.toIntExact((Long) task.getResult().child("num_bdrm").getValue())));
                     numbathDetails.setText(Integer.toString(Math.toIntExact((Long) task.getResult().child("num_bath").getValue())));
                     dateDetails.setText((String) task.getResult().child("date_and_time").getValue());
+
+                    /* Get the useID from the invitation in the data base and compare it to current userID (data member) */
+
+                    if (task.getResult().child("poster").getValue().equals(curr_userID)) {
+                        btnSubmit.setText("Show Current Responses");
+                    }
 
 
                     btnSubmit.setOnClickListener(new View.OnClickListener() {
@@ -81,18 +88,22 @@ public class InvitationDetails extends AppCompatActivity {
                         public void onClick(View view) {
 
                             System.out.println("INSIDE OF BUTTON ONCLICK TASK VAL:  " + task.getResult().child("poster").getValue());
-                            System.out.println("INSIDE OF BUTTON ONCLICK USEERID:  " + userID);
-                            System.out.println("INSIDE OF BUTTON ONCLICK USEERID:  " + task.getResult().child("poster").getValue() == userID);
+                            System.out.println("INSIDE OF BUTTON ONCLICK USEERID:  " + curr_userID);
+                            System.out.println("INSIDE OF BUTTON ONCLICK USEERID:  " + task.getResult().child("poster").getValue() == curr_userID);
                             // Firebase instance
-                            if (task.getResult().child("poster").getValue().equals(userID)) {
-                                toastMessage("This is YOUR invite, please go bajameswhack");
+                            if (task.getResult().child("poster").getValue().equals(curr_userID)) {
+                                /* Go to responses page with intent */
+                                //toastMessage("This is YOUR invite, going to responses.");
+                                Intent intent = new Intent(InvitationDetails.this, ShowingResponses.class);
+                                intent.putExtra("inviteID", invID);
+                                startActivity(intent);
                             }
                             else {
                                 FirebaseDatabase database = FirebaseDatabase.getInstance();
                                 DatabaseReference myRef = database.getReference().child("Invitations").child(invID);
                                 // New map to add
                                 HashMap<String, Object> result = new HashMap<>();
-                                result.put(userID, false);
+                                result.put(curr_userID, false);
                                 myRef.child("Responses").setValue(result);
                                 // Call intent to profile
                                 Intent intent = new Intent(InvitationDetails.this, ProfilePage.class);
