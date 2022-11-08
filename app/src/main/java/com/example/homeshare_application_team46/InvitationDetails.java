@@ -24,11 +24,15 @@ public class InvitationDetails extends AppCompatActivity {
 
         TextView numbdrmDetails = (TextView) findViewById(R.id.num_bdrms_inv_details);
         String numbdrmString = String.valueOf(curr_inv.getNum_bdrm());
-        propNameDetails.setText(numbdrmString);
+        numbdrmDetails.setText("Number of Bedrooms: " + numbdrmString);
 
-        TextView numbdrmDetails = (TextView) findViewById(R.id.num_bdrms_inv_details);
-        String numbdrmString = String.valueOf(curr_inv.getNum_bdrm());
-        propNameDetails.setText(numbdrmString);
+        TextView numbathDetails = (TextView) findViewById(R.id.num_baths_inv_details);
+        String numbathString = String.valueOf(curr_inv.getNum_bath());
+        numbathDetails.setText("Number of Baths: " + numbathString);
+
+        TextView rentpriceDetails = (TextView) findViewById(R.id.rent_price_inv_details);
+        String rentpriceString = String.valueOf(curr_inv.getPrice());
+        rentpriceDetails.setText("Rent per month: " + rentpriceString);
 
 
     }
