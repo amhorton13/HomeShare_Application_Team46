@@ -36,25 +36,10 @@ public class InvitationDetails extends AppCompatActivity {
         /* TODO: Query DB using invID to get the other information and set the value  */
 
         TextView propNameDetails = (TextView) findViewById(R.id.property_name);
-//        String propertyNameString = curr_inv.getPropName();
-//        propNameDetails.setText(propertyNameString);
-
         TextView numbdrmDetails = (TextView) findViewById(R.id.num_bdrms_inv_details);
-//        String numbdrmString = String.valueOf(curr_inv.getNum_bdrm());
-//        numbdrmDetails.setText("Number of Bedrooms: " + numbdrmString);
-
         TextView numbathDetails = (TextView) findViewById(R.id.num_baths_inv_details);
-//        String numbathString = String.valueOf(curr_inv.getNum_bath());
-//        numbathDetails.setText("Number of Baths: " + numbathString);
-
         TextView rentpriceDetails = (TextView) findViewById(R.id.rent_price_inv_details);
-//        String rentpriceString = String.valueOf(curr_inv.getPrice());
-//        rentpriceDetails.setText("Rent per month: " + rentpriceString);
-
         TextView addDetails = (TextView) findViewById(R.id.address_inv_details);
-        //String addString = String.valueOf(curr_inv.getAddress());
-        //addDetails.setText("Address: " + addString);
-
         displayInvitedetails(invID, propNameDetails, numbdrmDetails, numbathDetails, rentpriceDetails, addDetails);
     }
 
@@ -99,10 +84,10 @@ public class InvitationDetails extends AppCompatActivity {
                 }
                 else {
                     propNameDetails.setText((String)task.getResult().child("prop_name").getValue());
-                    rentpriceDetails.setText((String)task.getResult().child("price").getValue());
+                    rentpriceDetails.setText(Integer.toString(Math.toIntExact((Long) task.getResult().child("price").getValue())));
                     addDetails.setText((String)task.getResult().child("address").getValue());
-                    numbdrmDetails.setText((String)task.getResult().child("num_bdrm").getValue());
-                    numbathDetails.setText((String)task.getResult().child("num_bath").getValue());
+                    numbdrmDetails.setText(Integer.toString(Math.toIntExact((Long) task.getResult().child("num_bdrm").getValue())));
+                    numbathDetails.setText(Integer.toString(Math.toIntExact((Long) task.getResult().child("num_bath").getValue())));
                 }
             }
         });

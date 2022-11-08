@@ -113,7 +113,6 @@
         android:text="Submit Changes"
         android:layout_below="@+id/etBio"
         android:layout_marginTop="20dp"
-        android:onClick="submitChanges"
         android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>

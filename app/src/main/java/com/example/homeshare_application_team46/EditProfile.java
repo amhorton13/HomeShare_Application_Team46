@@ -76,8 +76,7 @@ public class EditProfile extends AppCompatActivity {
                     username.setText((String) task.getResult().child("username").getValue());
                     email.setText((String) task.getResult().child("email").getValue());
                     password.setText((String) task.getResult().child("password").getValue());
-                    age.setText( "4");
-                    System.out.println(task.getResult().child("age").getValue().getClass());
+                    age.setText(Integer.toString(Math.toIntExact((Long) task.getResult().child("age").getValue())));
                     bio.setText((String) task.getResult().child("biography").getValue());
 
                 }
