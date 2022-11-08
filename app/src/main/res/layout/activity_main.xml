@@ -14,7 +14,7 @@
         android:text="NavBar placeholder"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:onClick="openPostInvitation"/>
+        android:onClick="openProfile"/>
 
     <TextView
         android:id="@+id/login"

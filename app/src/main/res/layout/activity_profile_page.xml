@@ -7,6 +7,15 @@
     tools:context=".ProfilePage"
     android:gravity="center_horizontal">
 
+    <Button
+        android:id="@+id/editProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="editProfile"
+        android:text="Edit Profile"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
     <TextView
         android:id="@+id/profilePic"
         android:layout_width="wrap_content"

@@ -103,6 +103,7 @@ public class MainActivity extends AppCompatActivity implements MyCallback {
 //            String dText = location + " by " + poster;
 //            details.setText(dText);
             item.setOnClickListener(this::openInvitation);
+            item.setTag(inv.getInvitation_id());
             layout.addView(item);
         }
 
@@ -151,6 +152,12 @@ public class MainActivity extends AppCompatActivity implements MyCallback {
     }
     public void openPostInvitation(View view){
         Intent intent = new Intent(this, PostInvitation.class);
+        startActivity(intent);
+    }
+
+    public void openProfile(View view){
+        Intent intent = new Intent(this, ProfilePage.class);
+        intent.putExtra("user", "jameswha");
         startActivity(intent);
     }
 

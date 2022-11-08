@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -22,6 +23,8 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 
+import org.w3c.dom.Text;
+
 public class ProfilePage extends AppCompatActivity {
 
     private FirebaseDatabase database;
@@ -32,12 +35,16 @@ public class ProfilePage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_page);
-
+        Intent intent = getIntent();
         //TODO: Get User from intent
-        FirebaseAuth mAuth = FirebaseAuth.getInstance();
-        FirebaseUser user = mAuth.getCurrentUser();
-        String userID = user.getUid();
+        String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
         userProfile = User.queryUser(userID);
+
+        if(!intent.getStringExtra("user").equals(userProfile.getUsername())){
+            Button editProf = (Button) findViewById(R.id.editProfile);
+            ((ViewGroup) editProf.getParent()).removeView(editProf);
+        }
+        System.out.println("MADE IT HERE");
         if(userProfile == null) System.out.println("NULLLLLLLLLLLLL");
         else {
             System.out.println("USERNAME: " + userProfile.getUsername());
@@ -55,7 +62,6 @@ public class ProfilePage extends AppCompatActivity {
 
         LinearLayout layout = (LinearLayout) findViewById(R.id.scrollLayout);
         LayoutInflater li = LayoutInflater.from(this);
-        Intent intent = getIntent();
         if(intent.getExtras() != null && intent.getStringExtra("profileSetting").equals("responses")) {
             for(Invitation inv : testUser.getResponses()) {
                 ConstraintLayout item = (ConstraintLayout) li.inflate(R.layout.feed_item, layout, false);
@@ -75,6 +81,7 @@ public class ProfilePage extends AppCompatActivity {
                 String poster = "inv.getPoster().getUsername()";
                 String dText = location + " by " + poster;
                 details.setText(dText);
+                item.setTag(inv.getInvitation_id());
                 layout.addView(item);
             }
             Button resButton = (Button) findViewById(R.id.responses);
@@ -99,6 +106,8 @@ public class ProfilePage extends AppCompatActivity {
                 String location = inv.getAddress();
                 String dText = location;
                 details.setText(dText);
+
+                item.setTag(inv.getInvitation_id());
                 layout.addView(item);
             }
             Button invButton = (Button) findViewById(R.id.activeInv);
@@ -131,7 +140,7 @@ public class ProfilePage extends AppCompatActivity {
     //TODO: figure out getting inviteID from view and adding to intent
     public void openInvitation(View view){
         Intent intent = new Intent(this, InvitationDetails.class);
-        intent.putExtra("inviteID", 1);
+        intent.putExtra("inviteID", (String) view.getTag());
         startActivity(intent);
     }
 }

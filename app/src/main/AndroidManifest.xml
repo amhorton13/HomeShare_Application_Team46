@@ -24,7 +24,7 @@
             android:exported="false" />
         <activity
             android:name=".ProfilePage"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".PostInvitation"
             android:exported="false" />
