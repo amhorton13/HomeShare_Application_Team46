@@ -6,32 +6,44 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/navbar"
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/search"
+        android:layout_width="0dp"
         android:gravity="center"
-        android:layout_height="150px"
-        android:text="NavBar placeholder"
+        android:layout_height="60dp"
+        android:text="Search"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent=".33"
         app:layout_constraintStart_toStartOf="parent"
-        android:onClick="openProfile"/>
+        android:onClick="searchAndFilter"/>
 
-    <TextView
-        android:id="@+id/login"
-        android:layout_width="match_parent"
-        android:gravity="right"
-        android:layout_height="150px"
-        android:text="@string/login"
-        android:layout_marginRight="10dp"
+    <Button
+        android:id="@+id/post"
+        android:layout_width="0dp"
+        android:gravity="center"
+        android:layout_height="60dp"
+        android:text="Post"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintWidth_percent=".33"
+        app:layout_constraintLeft_toRightOf="@+id/search"
+        android:onClick="openPostInvitation"/>
+
+    <Button
+        android:id="@+id/profile"
+        android:layout_width="0dp"
+        android:gravity="center"
+        android:layout_height="60dp"
+        android:onClick="openProfile"
+        app:layout_constraintWidth_percent=".33"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/post"
         />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="@color/background_grey"
-        app:layout_constraintTop_toBottomOf="@+id/navbar"
+        app:layout_constraintTop_toBottomOf="@+id/search"
         app:layout_constraintBottom_toBottomOf="parent">
         <LinearLayout
             android:id="@+id/scrollLayout"

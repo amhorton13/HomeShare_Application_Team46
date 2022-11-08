@@ -156,7 +156,7 @@ public class MainActivity extends AppCompatActivity implements MyCallback {
             @Override
             public void onCallback(String email, String username, String password, int age, String biography) {
 
-                loginText = findViewById(R.id.login);
+                loginText = findViewById(R.id.profile);
                 loginText.setText(username);
                 System.out.println("CALLBACK LOGGED email" + email);
                 System.out.println("CALLBACK LOGGED userN" + username);
@@ -184,6 +184,11 @@ public class MainActivity extends AppCompatActivity implements MyCallback {
     }
     public void openPostInvitation(View view){
         Intent intent = new Intent(this, PostInvitation.class);
+        startActivity(intent);
+    }
+
+    public void searchAndFilter(View view){
+        Intent intent = new Intent(this, SearchAndFilter.class);
         startActivity(intent);
     }
 
