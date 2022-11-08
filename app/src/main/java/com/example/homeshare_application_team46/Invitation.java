@@ -53,7 +53,16 @@ public class Invitation {
 
     }
     public static Invitation queryInvitation(String invitation_id){
-        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();;
+        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
+        final Object[] poster = {null};
+        final Object[] propName = new Object[1];
+        final Object[] invitationID = new Object[1];
+        final Object[] date = new Object[1];
+        final Object[] price = new Object[1];
+        final Object[] address = new Object[1];
+        final Object[] numBeds = new Object[1];
+        final Object[] numBaths = new Object[1];
+
         mDatabase.child("Invitations").child(invitation_id).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
@@ -62,14 +71,25 @@ public class Invitation {
                 }
                 else {
                     //Log.d("firebase", String.valueOf(task.getResult().getValue()));
-                    for(DataSnapshot snap : task.getResult().getChildren()){
-                        System.out.println("invitation queryInvitation function" + snap.getValue());
-                    }
+                    poster[0] = task.getResult().child("poster").getValue();
+                    propName[0] = task.getResult().child("password").getValue();
+                    invitationID[0] = task.getResult().child("invitation_id").getValue();
+                    date[0] = task.getResult().child("date_and_time").getValue();
+                    price[0] = task.getResult().child("price").getValue();
+                    address[0] = task.getResult().child("address").getValue();
+                    numBeds[0] = task.getResult().child("num_bdrm").getValue();
+                    numBaths[0] = task.getResult().child("num_bath").getValue();
+                    returnInvitation(poster[0].toString(), propName[0].toString(), invitationID[0].toString(), date[0].toString(), (Math.toIntExact((Long) price[0])), address[0].toString(), (Math.toIntExact((Long) numBeds[0])), (Math.toIntExact((Long) numBaths[0])));
+
                 }
             }
         });
 
         return null;
+    }
+    public static Invitation returnInvitation(String poster, String propName, String invitation_id, String date_and_time, int price, String address, int num_bdrm, int num_bath) {
+        System.out.println(new Invitation(poster, propName, invitation_id, date_and_time, price, address, num_bdrm, num_bath));
+        return new Invitation(poster, propName, invitation_id, date_and_time, price, address, num_bdrm, num_bath);
     }
 
 }
