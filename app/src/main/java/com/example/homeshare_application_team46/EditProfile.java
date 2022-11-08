@@ -52,7 +52,7 @@ public class EditProfile extends AppCompatActivity {
                 result.put("email", email.getText().toString());
                 result.put("password", password.getText().toString());
                 result.put("age", Integer.parseInt(age.getText().toString()));
-                result.put("bio", bio.getText().toString());
+                result.put("biography", bio.getText().toString());
                 mDatabase.child("Users").child(userID).updateChildren(result);
 
                 Intent intent = new Intent(EditProfile.this, ProfilePage.class);
