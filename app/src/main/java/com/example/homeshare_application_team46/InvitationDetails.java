@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -44,7 +45,7 @@ public class InvitationDetails extends AppCompatActivity {
         rentpriceDetails.setText("Address: " + addString);
     }
 
-    public void responseHandler(){
+    public void responseHandler(View view){
         //TODO: Add the current user to the responses of the current invite
         //After responding to an invite, app goes to profile page to see all invites user has responded to.
         Invitation curr_inv = Invitation.queryInvitation(invID);
