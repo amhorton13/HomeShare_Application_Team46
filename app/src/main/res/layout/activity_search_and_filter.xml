@@ -122,101 +122,12 @@
         android:inputType="number"
         />
 
-    <TextView
-        android:id="@+id/AgeRangeTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_below="@+id/BathRangeTitle"
-        android:gravity="bottom"
-        android:text="Age Range:"
-        android:layout_marginStart="45dp"
-        android:textSize="18sp"
-        />
-
-    <EditText
-        android:id="@+id/ageMin"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/BathRangeTitle"
-        android:layout_toRightOf="@+id/AgeRangeTitle"
-        android:ems="10"
-        android:hint="@string/min"
-        android:inputType="number"
-        />
-
-    <EditText
-        android:id="@+id/ageMax"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/ageMin"
-        android:layout_below="@+id/BathRangeTitle"
-        android:ems="10"
-        android:hint="@string/max"
-        android:inputType="number"
-        />
-
-    <TextView
-        android:id="@+id/genderFilterTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Select Gender:"
-        android:layout_marginStart="45dp"
-        android:layout_marginTop="10dp"
-        android:textSize="18sp"
-        android:layout_below="@+id/AgeRangeTitle"
-        />
-
-    <RadioGroup
-        android:id="@+id/genderRadioGroup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_below="@+id/genderFilterTitle"
-        android:layout_marginStart="105dp"
-        >
-
-
-        <RadioButton
-            android:id="@+id/MaleRadioButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/genderFilterTitle"
-            android:text="M"
-            android:onClick="radioButtonhandler"/>
-
-        <RadioButton
-            android:id="@+id/FemaleRadioButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/genderRadioGroup"
-            android:text="F"
-            android:onClick="radioButtonhandler"/>
-
-        <RadioButton
-            android:id="@+id/OtherRadioButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/genderRadioGroup"
-            android:text="Other"
-            android:onClick="radioButtonhandler"/>
-
-        <RadioButton
-            android:id="@+id/AllGenderRadioButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/genderRadioGroup"
-            android:text="All Genders"
-            android:onClick="radioButtonhandler"/>
-
-    </RadioGroup>
-
-
 
     <Button
         android:id="@+id/ApplyFiltersButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="650dp"
+        android:layout_marginTop="215dp"
         android:backgroundTint="#D500F9"
         android:onClick="applyFiltersHandler"
         android:layout_centerHorizontal="true"

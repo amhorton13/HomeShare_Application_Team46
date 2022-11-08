@@ -67,15 +67,14 @@ public class MainActivity extends AppCompatActivity implements MyCallback {
         int maxBath = Integer.MAX_VALUE;
         int minRent = Integer.MIN_VALUE;
         int maxRent= Integer.MAX_VALUE;
-        if(intent.getStringExtra("filtering") != null){
-            minBdrm = Integer.parseInt(intent.getStringExtra("minbedrooms"));
-            maxBdrm = Integer.parseInt(intent.getStringExtra("maxbedrooms"));
-            minBath = Integer.parseInt(intent.getStringExtra("minbaths"));
-            maxBath = Integer.parseInt(intent.getStringExtra("maxbaths"));
-            minRent = Integer.parseInt(intent.getStringExtra("minrent"));
-            maxRent= Integer.parseInt(intent.getStringExtra("maxrent"));
-        }
 
+        //TODO: fix errors here, not sure what they are set to when left empty
+        if(intent.getStringExtra("minbedrooms") != null) minBdrm = Integer.parseInt(intent.getStringExtra("minbedrooms"));
+        if(intent.getStringExtra("maxbedrooms") != null) maxBdrm = Integer.parseInt(intent.getStringExtra("maxbedrooms"));
+        if(intent.getStringExtra("minbaths") != null) minBath = Integer.parseInt(intent.getStringExtra("minbaths"));
+        if(intent.getStringExtra("maxbaths") != null) maxBath = Integer.parseInt(intent.getStringExtra("maxbaths"));
+        if(intent.getStringExtra("minrent") != null) minRent = Integer.parseInt(intent.getStringExtra("minrent"));
+        if(intent.getStringExtra("maxrent") != null) maxRent= Integer.parseInt(intent.getStringExtra("maxrent"));
 
         //display invitations
         LinearLayout layout = (LinearLayout) findViewById(R.id.scrollLayout);
