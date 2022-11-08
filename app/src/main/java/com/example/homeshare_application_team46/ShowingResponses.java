@@ -52,17 +52,19 @@ public class ShowingResponses extends AppCompatActivity {
                     // james help with the layout inflator
                     LayoutInflater li = LayoutInflater.from(ShowingResponses.this);
 
-                            ArrayList<Response> responses = new ArrayList<>();
-                            ArrayList<String> usersToDisplay = new ArrayList<>();
+                    HashMap<String, Boolean>  responses = new HashMap<>();
+                    ArrayList<String> usersToDisplay = new ArrayList<>();
                     TextView acceptView = null;
                     if (!task.isSuccessful()) {
                                 Log.e("firebase", "Error getting data", task.getException());
                             } else {
                                 //get the responses column from a specific invitation item in firebase
-                                responses = (ArrayList<Response>) task.getResult().child("Responses").getValue();
+                                System.out.println(task.getResult().child("Responses").getValue());
+                                responses = ((HashMap<String, Boolean>) task.getResult().child("Responses").getValue());
+
                                 // loop through the responses and add the user from each response to toDisplay, then display
-                                for (Response r : responses){
-                                    String userID = r.getUser();
+                                for (String key : responses.keySet()){
+                                    String userID = key;
                                     usersToDisplay.add(userID);
                                     // now you have a list of userIDs to display
                                 }
