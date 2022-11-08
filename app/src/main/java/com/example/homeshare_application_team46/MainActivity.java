@@ -111,6 +111,17 @@ public class MainActivity extends AppCompatActivity implements MyCallback {
                         }
                     }
 
+                    if(intent.getStringExtra("sort") != null && !intent.getStringExtra("sort").equals("")){
+                        if(intent.getStringExtra("sort").equals("price")){
+                            toDisplay.sort((Invitation i1, Invitation i2)-> i1.getPrice() - i2.getPrice());
+                        }
+                        else if(intent.getStringExtra("sort").equals("bed")){
+                            toDisplay.sort((Invitation i1, Invitation i2)-> i2.getNum_bdrm() - i1.getNum_bdrm());
+                        }
+                        else if(intent.getStringExtra("sort").equals("bath")){
+                            toDisplay.sort((Invitation i1, Invitation i2)-> i2.getNum_bath() - i1.getNum_bath());
+                        }
+                    }
 
                     for (Invitation inv : toDisplay) {
                         ConstraintLayout item = (ConstraintLayout) li.inflate(R.layout.feed_item, layout, false);

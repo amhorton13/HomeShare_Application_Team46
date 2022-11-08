@@ -122,12 +122,59 @@
         android:inputType="number"
         />
 
+    <TextView
+        android:id="@+id/Sort"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_below="@+id/bathMax"
+        android:gravity="bottom"
+        android:text="Sort By:"
+        android:layout_marginStart="45dp"
+        android:textSize="18sp"
+        />
+
+    <RadioGroup
+        android:id="@+id/sortGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bathMin"
+        android:orientation="horizontal"
+        android:layout_toRightOf="@+id/Sort">
+
+        <RadioButton
+            android:id="@+id/PriceSort"
+            android:layout_marginLeft="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:checked="false"
+            android:text="Price"
+            android:textAlignment="center" />
+        <RadioButton
+            android:id="@+id/BdrmSort"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:checked="false"
+            android:text="Bdrms"
+            android:textAlignment="center" />
+        <RadioButton
+            android:id="@+id/BathSort"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:checked="false"
+            android:text="Baths"
+            android:textAlignment="center" />
+    </RadioGroup>
+
 
     <Button
         android:id="@+id/ApplyFiltersButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="215dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/Sort"
         android:backgroundTint="#D500F9"
         android:onClick="applyFiltersHandler"
         android:layout_centerHorizontal="true"

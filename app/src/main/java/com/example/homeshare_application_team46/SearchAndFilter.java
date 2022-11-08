@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -67,7 +68,6 @@ public class SearchAndFilter extends AppCompatActivity {
 
         EditText minrentEditText = (EditText) findViewById(R.id.priceMin);
         min_rent = minrentEditText.getText().toString();
-        System.out.println("PriceMin: " + min_rent);
 
         EditText maxrentEditText = (EditText) findViewById(R.id.priceMax);
         max_rent = maxrentEditText.getText().toString();
@@ -83,6 +83,17 @@ public class SearchAndFilter extends AppCompatActivity {
 
         EditText maxbathEditText = (EditText) findViewById(R.id.bathMax);
         max_bath = maxbathEditText.getText().toString();
+
+        RadioGroup sortGroup = (RadioGroup) findViewById(R.id.sortGroup);
+        if(sortGroup.getCheckedRadioButtonId() == sortGroup.getChildAt(0).getId()){
+            intent.putExtra("sort", "price");
+        }
+        else if(sortGroup.getCheckedRadioButtonId() == sortGroup.getChildAt(1).getId()){
+            intent.putExtra("sort", "bed");
+        }
+        else if(sortGroup.getCheckedRadioButtonId() == sortGroup.getChildAt(2).getId()){
+            intent.putExtra("sort", "bath");
+        }
 
         intent.putExtra("filtering", "yes");
 
