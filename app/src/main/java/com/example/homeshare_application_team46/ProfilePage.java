@@ -138,6 +138,7 @@ public class ProfilePage extends AppCompatActivity {
                             String poster = inv.getPoster();
                             String dText = location + " by " + poster;
                             details.setText(dText);
+                            details.setTag(inv.getInvitation_id());
                             layout.addView(item);
                         }
                         Button resButton = (Button) findViewById(R.id.responses);
@@ -162,6 +163,7 @@ public class ProfilePage extends AppCompatActivity {
                             String location = inv.getAddress();
                             String dText = location;
                             details.setText(dText);
+                            details.setTag(inv.getInvitation_id());
                             layout.addView(item);
                         }
                         Button invButton = (Button) findViewById(R.id.activeInv);
