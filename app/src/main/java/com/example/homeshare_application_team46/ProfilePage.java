@@ -113,6 +113,11 @@ public class ProfilePage extends AppCompatActivity {
                         int numBed = ((Long) t.child("num_bdrm").getValue()).intValue();;
                         int price = ((Long) t.child("price").getValue()).intValue();;
 
+                        for(DataSnapshot response : t.child("Responses").getChildren()){
+                            if(userID.equals(response.getKey())){
+                                userProf.addResponse(new Invitation(poster, propName, invID, date, price, address, numBed, numBath));
+                            }
+                        }
 
                         if(userID.equals(poster)){
                             userProf.addInvitation(new Invitation(poster, propName, invID, date, price, address, numBed, numBath));
@@ -135,9 +140,9 @@ public class ProfilePage extends AppCompatActivity {
                             bedBath.setText(bbText);
                             //set details
                             TextView details = (TextView) item.getChildAt(3);
-                            String location = inv.getAddress();
-                            String poster = inv.getPoster();
-                            String dText = location + " by " + poster;
+                            String address = inv.getAddress();
+                            String propName = inv.getPropName();
+                            String dText = propName + " at " + address;
                             details.setText(dText);
                             item.setTag(inv.getInvitation_id());
                             layout.addView(item);
