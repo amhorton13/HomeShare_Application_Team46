@@ -54,7 +54,7 @@ public class ShowingResponses extends AppCompatActivity {
 
                     HashMap<String, Boolean>  responses = new HashMap<>();
                     ArrayList<String> usersToDisplay = new ArrayList<>();
-                    TextView acceptView = null;
+                    final TextView[] acceptView = {null};
                     if (!task.isSuccessful()) {
                                 Log.e("firebase", "Error getting data", task.getException());
                             } else {
@@ -68,40 +68,53 @@ public class ShowingResponses extends AppCompatActivity {
                                     usersToDisplay.add(userID);
                                     // now you have a list of userIDs to display
                                 }
+                            DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();;
+                            //Invitation temp = new Invitation();
+                            //TODO: the child is invitations, can you get child again with responses?
+                            mDatabase.child("Users").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                                @Override
+                                public void onComplete(@NonNull Task<DataSnapshot> task) {
+                                    if (!task.isSuccessful()) {
+                                        Log.e("firebase", "Error getting data", task.getException());
+                                    }
+                                    else {
 
-                                for (String userID : usersToDisplay) {
-                                    ConstraintLayout item = (ConstraintLayout) li.inflate(R.layout.feed_item, layout, false);
-                                    //set price
-                                    TextView userName = (TextView) item.getChildAt(0);
-                                    // technically want to query using userID to get some user info
-                                    String userText = "User: " + userID;
-                                    userName.setText(userText);
-                                    // add an accept button type deal
-                                    acceptView = (TextView) item.getChildAt(1);
-                                    acceptView.setText("Click Here To ACCEPT");
-                                    //item.setTag(inv.getInvitation_id());
-                                    layout.addView(item);
+                                        for (String userID : usersToDisplay) {
+                                            ConstraintLayout item = (ConstraintLayout) li.inflate(R.layout.feed_item, layout, false);
+                                            //set price
+                                            TextView userName = (TextView) item.getChildAt(0);
+                                            // technically want to query using userID to get some user info
+                                            String userText = "User: " + task.getResult().child(userID).child("username").getValue();
+                                            userName.setText(userText);
+                                            // add an accept button type deal
+                                            acceptView[0] = (TextView) item.getChildAt(1);
+                                            acceptView[0].setText("Click Here To ACCEPT");
+                                            //item.setTag(inv.getInvitation_id());
+                                            layout.addView(item);
+                                            System.out.println("ITERATING USERID " + task.getResult().child(userID).getValue());
+                                        }
+                                    }
                                 }
-                            }
+                                });
+                    }
+                }
 
                             //When the user clicks on acceptView, the response is accepted, add code to do that
 
-                    TextView finalAcceptView = acceptView;
-                    acceptView.setOnClickListener(new View.OnClickListener() {
-    
-                            @Override
-                            public void onClick(View v) {
-                                // TODO when "click here to accept is clicked", find the response in response array and set as accepted?
-                                finalAcceptView.setText("Roommate Accepted!");
-    
-                            }
-                        });
+//                    TextView finalAcceptView = acceptView;
+//                    acceptView.setOnClickListener(new View.OnClickListener() {
+//
+//                            @Override
+//                            public void onClick(View v) {
+//                                // TODO when "click here to accept is clicked", find the response in response array and set as accepted?
+//                                finalAcceptView.setText("Roommate Accepted!");
+//
+//                            }
+//                        });
 
                 }
-            }
-        });
-
-    }
+            });
+        }
 
     public void openInvitation(View view){
         Intent intent = new Intent(this, InvitationDetails.class);
