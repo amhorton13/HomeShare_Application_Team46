@@ -42,7 +42,7 @@ public class InvitationDetails extends AppCompatActivity {
 
         TextView addDetails = (TextView) findViewById(R.id.address_inv_details);
         String addString = String.valueOf(curr_inv.getAddress());
-        rentpriceDetails.setText("Address: " + addString);
+        addDetails.setText("Address: " + addString);
     }
 
     public void responseHandler(View view){
