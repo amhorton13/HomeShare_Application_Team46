@@ -39,6 +39,7 @@ public class Invitation {
     public String getPoster(){ return poster;}
     public String getInvitation_id(){ return invitation_id;}
     public String getDate_and_time(){return date_and_time;}
+    public java.lang.String getPropName() {return propName;}
     public int getPrice(){return price;}
     public String getAddress(){return address;}
     public int getNum_bdrm(){return num_bdrm;}
