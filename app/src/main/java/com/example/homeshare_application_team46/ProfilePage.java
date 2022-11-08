@@ -116,7 +116,10 @@ public class ProfilePage extends AppCompatActivity {
 
     public void showInvites(View view){
         Intent intent = new Intent(this, ProfilePage.class);
-        intent.putExtra("profileSetting", "invites");
+        startActivity(intent);
+    }
+    public void editProfile(View view){
+        Intent intent = new Intent(this, EditProfile.class);
         startActivity(intent);
     }
 
@@ -131,6 +134,7 @@ public class ProfilePage extends AppCompatActivity {
         intent.putExtra("inviteID", 1);
         startActivity(intent);
     }
+
 
     public void queryUser(String userID, LinearLayout layout, LayoutInflater li){
         DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();;
@@ -213,11 +217,11 @@ public class ProfilePage extends AppCompatActivity {
 
 
                 }
-                try {
-                    Thread.sleep(3000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+//                try {
+//                    Thread.sleep(3000);
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }
             }
         });
 

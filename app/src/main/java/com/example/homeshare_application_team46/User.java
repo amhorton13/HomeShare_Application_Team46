@@ -39,6 +39,7 @@ public class User {
         this.age = age;
         this.biography = biography;
         user_interests = new ArrayList<>();
+
         user_invitations = new ArrayList<>();
         invitations_responded_to = new ArrayList<>();
     }
