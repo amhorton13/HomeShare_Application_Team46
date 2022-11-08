@@ -41,10 +41,10 @@ public class ProfilePage extends AppCompatActivity {
         String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
         System.out.println("ID: " + userID);
         userProf = User.queryUser(userID);
-        System.out.println("Name: " + userProf.getUsername());
+
 
         //TODO: Get User from intent
-        String username = "JamesHarris";
+        String username = "Loading";
         TextView nameView = (TextView) findViewById(R.id.username);
         nameView.setText(username);
 
@@ -148,6 +148,12 @@ public class ProfilePage extends AppCompatActivity {
                     temp.setUsername((String) task.getResult().child("username").getValue());
                     System.out.println("ONCOMPLETE" + temp.getUsername());
 
+                    TextView nameView = (TextView) findViewById(R.id.username);
+                    nameView.setText(temp.getUsername());
+
+                    TextView bioView = (TextView) findViewById(R.id.bio);
+                    bioView.setText(temp.getBiography());
+
                     Invitation testInv1 = new Invitation("testUser", "minn", "1", "popo", 1500, "USC", 2, 2);
                     Invitation testInv2 = new Invitation("testUser", "jkdnfjks", "2", "date", 2000, "Orchard", 1, 1);
                     Invitation testInv3 = new Invitation("testUser2", "jks","3", "date", 2300, "The Moon", 4, 2);
@@ -156,7 +162,7 @@ public class ProfilePage extends AppCompatActivity {
                     temp.addResponse(testInv1);
 
                     Intent intent = getIntent();
-                    if(intent.getExtras() != null && intent.getStringExtra("profileSetting").equals("responses")) {
+                    if(intent.getStringExtra("profileSetting") != null && intent.getStringExtra("profileSetting").equals("responses")) {
                         for(Invitation inv : temp.getResponses()) {
                             ConstraintLayout item = (ConstraintLayout) li.inflate(R.layout.feed_item, layout, false);
                             //set price
@@ -172,7 +178,7 @@ public class ProfilePage extends AppCompatActivity {
                             //set details
                             TextView details = (TextView) item.getChildAt(3);
                             String location = inv.getAddress();
-                            String poster = "inv.getPoster().getUsername()";
+                            String poster = inv.getPoster();
                             String dText = location + " by " + poster;
                             details.setText(dText);
                             layout.addView(item);
@@ -207,11 +213,15 @@ public class ProfilePage extends AppCompatActivity {
 
 
                 }
+                try {
+                    Thread.sleep(3000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
 
+
     }
 }
-
-
