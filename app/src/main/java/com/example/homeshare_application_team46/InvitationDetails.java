@@ -34,11 +34,13 @@ public class InvitationDetails extends AppCompatActivity {
         String rentpriceString = String.valueOf(curr_inv.getPrice());
         rentpriceDetails.setText("Rent per month: " + rentpriceString);
 
-
+        TextView addDetails = (TextView) findViewById(R.id.address_inv_details);
+        String addString = String.valueOf(curr_inv.getAddress());
+        rentpriceDetails.setText("Address: " + addString);
     }
 
     public void responseHandler(){
-        //TODO: Update data structure or database that has which invites a user has responded to
+        //TODO: Add the current user to the responses of the current invite
 
         //After responding to an invite, app goes to profile page to see all invites user has responded to.
         Intent intent = new Intent(this, ProfilePage.class);
