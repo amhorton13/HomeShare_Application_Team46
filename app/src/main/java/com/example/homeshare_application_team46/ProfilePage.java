@@ -37,10 +37,8 @@ public class ProfilePage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_page);
-
-        userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
-
-        //TODO: Get User from intent
+        Intent intent = getIntent();
+        userID = (String) intent.getStringExtra("user");
 
         String username = "Loading";
         TextView nameView = (TextView) findViewById(R.id.username);
@@ -53,6 +51,7 @@ public class ProfilePage extends AppCompatActivity {
 
     public void showInvites(View view){
         Intent intent = new Intent(this, ProfilePage.class);
+        intent.putExtra("user", userID);
         startActivity(intent);
     }
     public void editProfile(View view){
@@ -63,12 +62,12 @@ public class ProfilePage extends AppCompatActivity {
     public void showResponses(View view){
         Intent intent = new Intent(this, ProfilePage.class);
         intent.putExtra("profileSetting", "responses");
+        intent.putExtra("user", userID);
         startActivity(intent);
     }
-    //TODO: figure out getting inviteID from view and adding to intent
+
     public void openInvitation(View view){
         Intent intent = new Intent(this, InvitationDetails.class);
-        System.out.println((String) view.getTag());
         intent.putExtra("inviteID", (String) view.getTag());
         startActivity(intent);
     }

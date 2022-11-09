@@ -70,7 +70,6 @@ public class ShowingResponses extends AppCompatActivity {
                                 }
                             DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();;
                             //Invitation temp = new Invitation();
-                            //TODO: the child is invitations, can you get child again with responses?
                             mDatabase.child("Users").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
                                 @Override
                                 public void onComplete(@NonNull Task<DataSnapshot> task) {
@@ -91,12 +90,9 @@ public class ShowingResponses extends AppCompatActivity {
 
                                             // add an accept button type deal
                                             acceptView[0] = (TextView) item.getChildAt(2);
-                                            acceptView[0].setText("Click Here To ACCEPT");
-
                                             acceptView[0].setTag(userID);
                                             acceptView[0].setOnClickListener(ShowingResponses.this::acceptUser);
                                             layout.addView(item);
-                                            System.out.println("ITERATING USERID " + task.getResult().child(userID).getValue());
                                         }
                                     }
                                 }

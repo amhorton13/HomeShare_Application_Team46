@@ -205,7 +205,7 @@ public class MainActivity extends AppCompatActivity implements MyCallback {
 
     public void openProfile(View view){
         Intent intent = new Intent(this, ProfilePage.class);
-        intent.putExtra("user", "jameswha");
+        intent.putExtra("user", userID);
         startActivity(intent);
     }
 
