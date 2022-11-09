@@ -83,6 +83,8 @@ public class ShowingResponses extends AppCompatActivity {
                                             ConstraintLayout item = (ConstraintLayout) li.inflate(R.layout.response_item, layout, false);
                                             //set price
                                             TextView userName = (TextView) item.getChildAt(0);
+                                            userName.setTag(userID);
+                                            userName.setOnClickListener(ShowingResponses.this::displayUser);
                                             // technically want to query using userID to get some user info
                                             String userText = "User: " + task.getResult().child(userID).child("username").getValue();
                                             userName.setText(userText);
@@ -109,8 +111,15 @@ public class ShowingResponses extends AppCompatActivity {
         HashMap<String, Object> result = new HashMap<>();
         result.put(userID, true);
         DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
-        mDatabase.child(invID).child("Responses").updateChildren(result);
+        mDatabase.child("Invitations").child(invID).child("Responses").setValue(result);
         Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+    public void displayUser(View view) {
+        String userID = (String) view.getTag();
+        System.out.println("DISPLAY USER  " + userID);
+        Intent intent = new Intent(this, ProfilePage.class);
+        intent.putExtra("user", userID);
         startActivity(intent);
     }
 
