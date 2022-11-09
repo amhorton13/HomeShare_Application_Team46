@@ -108,6 +108,10 @@ public class MainActivity extends AppCompatActivity implements MyCallback {
                         boolean isActive = true;
 
                         for(DataSnapshot response : t.child("Responses").getChildren()){
+                            if(response.getValue().equals(true)){
+                                isActive = false;
+                                break;
+                            }
                         }
 
                         if (goodBed && goodBath && goodPrice && isActive) {
