@@ -80,7 +80,7 @@ public class ShowingResponses extends AppCompatActivity {
                                     else {
 
                                         for (String userID : usersToDisplay) {
-                                            ConstraintLayout item = (ConstraintLayout) li.inflate(R.layout.feed_item, layout, false);
+                                            ConstraintLayout item = (ConstraintLayout) li.inflate(R.layout.response_item, layout, false);
                                             //set price
                                             TextView userName = (TextView) item.getChildAt(0);
                                             // technically want to query using userID to get some user info
@@ -97,23 +97,9 @@ public class ShowingResponses extends AppCompatActivity {
                                         }
                                     }
                                 }
-                                });
+                            });
+                        }
                     }
-                }
-
-                            //When the user clicks on acceptView, the response is accepted, add code to do that
-
-//                    TextView finalAcceptView = acceptView;
-//                    acceptView.setOnClickListener(new View.OnClickListener() {
-//
-//                            @Override
-//                            public void onClick(View v) {
-//                                // TODO when "click here to accept is clicked", find the response in response array and set as accepted?
-//                                finalAcceptView.setText("Roommate Accepted!");
-//
-//                            }
-//                        });
-
                 }
             });
         }
