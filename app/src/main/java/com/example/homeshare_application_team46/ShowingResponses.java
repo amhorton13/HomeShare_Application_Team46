@@ -87,7 +87,7 @@ public class ShowingResponses extends AppCompatActivity {
                                             String userText = "User: " + task.getResult().child(userID).child("username").getValue();
                                             userName.setText(userText);
                                             // add an accept button type deal
-                                            acceptView[0] = (TextView) item.getChildAt(1);
+                                            acceptView[0] = (TextView) item.getChildAt(2);
                                             acceptView[0].setText("Click Here To ACCEPT");
                                             //item.setTag(inv.getInvitation_id());
                                             layout.addView(item);
@@ -114,6 +114,9 @@ public class ShowingResponses extends AppCompatActivity {
 
                 }
             });
+        }
+        public void acceptUser(View view){
+            String userID = (String) view.getTag();
         }
 
     public void openInvitation(View view){
