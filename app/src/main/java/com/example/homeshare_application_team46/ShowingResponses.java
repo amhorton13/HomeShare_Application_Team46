@@ -86,12 +86,14 @@ public class ShowingResponses extends AppCompatActivity {
                                             // technically want to query using userID to get some user info
                                             String userText = "User: " + task.getResult().child(userID).child("username").getValue();
                                             userName.setText(userText);
+
                                             // add an accept button type deal
                                             acceptView[0] = (TextView) item.getChildAt(2);
                                             acceptView[0].setText("Click Here To ACCEPT");
                                             //item.setTag(inv.getInvitation_id());
                                             layout.addView(item);
                                             System.out.println("ITERATING USERID " + task.getResult().child(userID).getValue());
+                                            acceptUser(acceptView[0]);
                                         }
                                     }
                                 }
@@ -118,6 +120,10 @@ public class ShowingResponses extends AppCompatActivity {
     //TODO: JJ do this
     public void acceptUser(View view){
         String userID = (String) view.getTag();
+        HashMap<String, Object> result = new HashMap<>();
+        result.put(userID, true);
+        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase.child(invID).child("Responses").updateChildren(result);
     }
 
     public void openInvitation(View view){
