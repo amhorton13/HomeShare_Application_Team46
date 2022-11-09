@@ -104,7 +104,7 @@ public class InvitationDetails extends AppCompatActivity {
                                 // New map to add
                                 HashMap<String, Object> result = new HashMap<>();
                                 result.put(curr_userID, false);
-                                myRef.child("Responses").setValue(result);
+                                myRef.child("Responses").child(curr_userID).setValue(false);
                                 // Call intent to profile
                                 Intent intent = new Intent(InvitationDetails.this, ProfilePage.class);
                                 startActivity(intent);

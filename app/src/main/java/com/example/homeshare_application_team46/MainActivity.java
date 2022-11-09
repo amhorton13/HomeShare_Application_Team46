@@ -105,8 +105,12 @@ public class MainActivity extends AppCompatActivity implements MyCallback {
                         boolean goodBed = numBed >= finalMinBdrm && numBed <= finalMaxBdrm;
                         boolean goodBath = numBath >= finalMinBath && numBath <= finalMaxBath;
                         boolean goodPrice = price >= finalMinRent && price <= finalMaxRent;
-                        if (goodBed && goodBath && goodPrice) {
-                            System.out.println("Added:");
+                        boolean isActive = true;
+
+                        for(DataSnapshot response : t.child("Responses").getChildren()){
+                        }
+
+                        if (goodBed && goodBath && goodPrice && isActive) {
                             toDisplay.add(new Invitation(poster, propName, invID, date, price, address, numBed, numBath));
                         }
                     }
@@ -178,12 +182,6 @@ public class MainActivity extends AppCompatActivity implements MyCallback {
 
         });
 
-    }
-
-    public void openLogin(View view){
-        Intent intent = new Intent(view.getContext(), LoginPage.class);
-        startActivity(intent);
-        User testUser3 = new User("jj@usc.edu", "jjVal", "peepeepoopoo", 43, "milfs");
     }
 
     public void openInvitation(View view){

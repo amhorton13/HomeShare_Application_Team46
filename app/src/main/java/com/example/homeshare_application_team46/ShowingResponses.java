@@ -106,8 +106,10 @@ public class ShowingResponses extends AppCompatActivity {
         }
     public void acceptUser(View view){
         String userID = (String) view.getTag();
+        HashMap<String, Object> result = new HashMap<>();
+        result.put(userID, true);
         DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
-        mDatabase.child("Invitations").child(invID).child("Responses").push().child(userID).setValue(false);
+        mDatabase.child(invID).child("Responses").updateChildren(result);
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
