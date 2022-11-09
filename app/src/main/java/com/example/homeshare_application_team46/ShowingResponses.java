@@ -115,9 +115,10 @@ public class ShowingResponses extends AppCompatActivity {
                 }
             });
         }
-        public void acceptUser(View view){
-            String userID = (String) view.getTag();
-        }
+    //TODO: JJ do this
+    public void acceptUser(View view){
+        String userID = (String) view.getTag();
+    }
 
     public void openInvitation(View view){
         Intent intent = new Intent(this, InvitationDetails.class);
