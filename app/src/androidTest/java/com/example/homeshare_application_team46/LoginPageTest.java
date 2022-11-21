@@ -8,6 +8,11 @@ import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
+import static androidx.test.espresso.action.ViewActions.click;
+import static androidx.test.espresso.matcher.ViewMatchers.withId;
+import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
+import static androidx.test.espresso.action.ViewActions.typeText;
+
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -31,8 +36,13 @@ public class LoginPageTest {
 
     @Test
     public void TestSuccessfulLogin(){
+        // type a correct username and password into the fields and click submit
         onView(withId(R.id.etEmail)).perform(typeText(STRING_TO_BE_TYPED_USERNAME), closeSoftKeyboard());
         onView(withId(R.id.etPassword)).perform(typeText(STRING_TO_BE_TYPED_PASSWORD), closeSoftKeyboard());
+
+        onView(withId(R.id.btnSubmit)).perform(click());
+
+        // TODO: check if the main activity has been started???
     }
 
 }
