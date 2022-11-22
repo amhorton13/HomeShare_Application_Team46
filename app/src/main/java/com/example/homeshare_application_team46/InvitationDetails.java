@@ -107,6 +107,7 @@ public class InvitationDetails extends AppCompatActivity {
                                 myRef.child("Responses").child(curr_userID).setValue(false);
                                 // Call intent to profile
                                 Intent intent = new Intent(InvitationDetails.this, ProfilePage.class);
+                                intent.putExtra("user", curr_userID);
                                 startActivity(intent);
                             }
 
