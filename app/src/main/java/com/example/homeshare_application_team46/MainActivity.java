@@ -156,7 +156,6 @@ public class MainActivity extends AppCompatActivity implements MyCallback {
             }
         });
 
-
         // Create the user that's logged in
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
@@ -186,6 +185,44 @@ public class MainActivity extends AppCompatActivity implements MyCallback {
 
         });
 
+        //notifyUser();
+    }
+
+    public void notifyUser(){
+        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();;
+        //TODO: Loop through all the invitations and all the responses?
+        // if the boolean is set to true, meaning accepted, then display toast message
+        mDatabase.child("Invitations").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (!task.isSuccessful()) {
+                    Log.e("firebase", "Error getting data", task.getException());
+                }
+                else {
+                    // TODO: get the responses for the single invitation
+                    HashMap<String, Boolean>  responses = new HashMap<>();
+                    for (DataSnapshot t : task.getResult().getChildren()) {
+                        // each data snapshot t is a single invitation
+                        //  TODO: LOOP through the responses check if the user matches current user
+                        //   if it matches, check boolean and then return toast message
+                        for(DataSnapshot response : t.child("Responses").getChildren()){
+                            if(response.getValue().equals(true) && response.getKey().equals(userID)){
+                                // a repsonse with the current user's ID and has been accepted
+                                //TODO: display toast message that their response has been accepted
+                                toastMessage("Your Response has been Accepted!");
+                                // can we make the toast message last for longer?
+                                // idk if this is the right first parameter
+                                Intent intent = new Intent(MainActivity.this, InvitationDetails.class);
+                                intent.putExtra("inviteID", (String) t.child("invitation_id").getValue());
+                                startActivity(intent);
+                                break;
+                            }
+                        }
+
+                    }
+                }
+            }
+        });
     }
 
     public void openInvitation(View view){
