@@ -215,6 +215,7 @@ public class MainActivity extends AppCompatActivity implements MyCallback {
                                 Intent intent = new Intent(MainActivity.this, InvitationDetails.class);
                                 intent.putExtra("inviteID", (String) t.child("invitation_id").getValue());
                                 startActivity(intent);
+                                //commit
                                 break;
                             }
                         }
