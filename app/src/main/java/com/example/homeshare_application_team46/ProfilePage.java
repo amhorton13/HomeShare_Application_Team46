@@ -59,6 +59,11 @@ public class ProfilePage extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void logOut(View view){
+        Intent intent = new Intent(this, LoginPage.class);
+        startActivity(intent);
+    }
+
     public void showResponses(View view){
         Intent intent = new Intent(this, ProfilePage.class);
         intent.putExtra("profileSetting", "responses");
