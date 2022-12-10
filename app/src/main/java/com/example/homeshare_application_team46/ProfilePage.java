@@ -148,6 +148,22 @@ public class ProfilePage extends AppCompatActivity {
                             String propName = inv.getPropName();
                             String dText = propName + " at " + address;
                             details.setText(dText);
+                            //check if accepted
+                            mDatabase.child("Invitations").child(inv.getInvitation_id()).child("Responses").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                                @Override
+                                public void onComplete(@NonNull Task<DataSnapshot> task) {
+                                    if (!task.isSuccessful()) {
+                                        Log.e("firebase", "Error getting data", task.getException());
+                                    }
+                                    else {
+                                        for(DataSnapshot t : task.getResult().getChildren()){
+                                            if(t != null && t.getKey().equals(userID) && (boolean) t.getValue()){
+                                                item.setBackgroundColor(Color.parseColor("#4CBB17"));
+                                            }
+                                        }
+                                    }
+                                }
+                            });
                             item.setTag(inv.getInvitation_id());
                             layout.addView(item);
                         }
